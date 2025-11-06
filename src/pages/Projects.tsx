@@ -14,7 +14,12 @@ const Projects = () => {
       {
         name: "Industrial Products",
         projects: [
-          { name: "Mednyxa", href: "/projects/mednyxa" },
+          {
+            name: "Mednyxa",
+            href: "/projects/mednyxa",
+            description:
+              "Mednyxa is a global telemedicine platform that connects patients with trusted doctors online through a fast and easy-to-use system. Our goal is to make healthcare more accessible for everyone by providing secure consultations, health guidance, and ongoing support anytime, anywhere. Mednyxa focuses on delivering quality care, smooth communication between patients and doctors, and a reliable digital healthcare experience through both mobile and web platforms.",
+          },
           { name: "OptiLens", href: "/projects/optilens" },
         ],
       },
@@ -196,18 +201,32 @@ const Projects = () => {
                       exit="exit"
                       className="relative flex w-full flex-col gap-8"
                     >
-                      {category.projects.map((project) => (
-                        <motion.div key={project.name} variants={detailCardVariants} className="w-full">
-                          <EvervaultCard
-                            text={project.name}
-                            buttonHref={project.href}
-                            buttonLabel="View Project"
-                            gradientClassName="bg-gradient-to-r from-white/80 via-white/45 to-white/20"
-                            buttonClassName="border-white/30 bg-white/75 text-black hover:bg-white/85"
-                            className="h-full"
-                          />
-                        </motion.div>
-                      ))}
+                      {category.projects.map((project) => {
+                        const hasDescription = Boolean(project.description);
+
+                        const containerClasses = hasDescription
+                          ? "relative w-full max-w-xl pb-48"
+                          : "w-full max-w-sm";
+
+                        const actionProps = hasDescription
+                          ? { description: project.description, allowOverflow: true }
+                          : {
+                              buttonHref: project.href,
+                              buttonLabel: "View Project",
+                              buttonClassName: "border-white/30 bg-white/75 text-black hover:bg-white/85",
+                            };
+
+                        return (
+                          <motion.div key={project.name} variants={detailCardVariants} className={containerClasses}>
+                            <EvervaultCard
+                              text={project.name}
+                              gradientClassName="bg-gradient-to-r from-white/80 via-white/45 to-white/20"
+                              className="h-full"
+                              {...actionProps}
+                            />
+                          </motion.div>
+                        );
+                      })}
                     </motion.div>,
                   );
                 }

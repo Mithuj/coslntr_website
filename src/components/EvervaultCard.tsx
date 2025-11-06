@@ -12,6 +12,8 @@ interface EvervaultCardProps {
   onButtonClick?: () => void;
   buttonClassName?: string;
   gradientClassName?: string;
+  description?: string;
+  allowOverflow?: boolean;
 }
 
 export const EvervaultCard: React.FC<EvervaultCardProps> = ({
@@ -22,6 +24,8 @@ export const EvervaultCard: React.FC<EvervaultCardProps> = ({
   onButtonClick,
   buttonClassName,
   gradientClassName,
+  description,
+  allowOverflow = false,
 }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -38,48 +42,62 @@ export const EvervaultCard: React.FC<EvervaultCardProps> = ({
     setRandomString(generateRandomString(1500));
   };
 
+  const shouldAllowOverflow = allowOverflow || Boolean(description);
+
   return (
     <div className={cn("p-0.5 bg-transparent aspect-square flex items-center justify-center w-full h-full relative", className)}>
       <div
         onMouseMove={handleMouseMove}
-        className="group/card relative flex h-full w-full items-center justify-center overflow-hidden rounded-3xl bg-transparent"
+        className={cn(
+          "group/card relative flex h-full w-full items-center justify-center rounded-3xl bg-transparent",
+          shouldAllowOverflow ? "overflow-visible" : "overflow-hidden",
+        )}
       >
         <CardPattern mouseX={mouseX} mouseY={mouseY} randomString={randomString} gradientClassName={gradientClassName} />
-        <div className="relative z-10 flex flex-col items-center justify-center gap-6">
+        <div className="relative z-10 flex h-full w-full flex-col items-center justify-center">
           <div className="relative flex h-44 w-44 items-center justify-center rounded-full text-4xl font-bold text-white">
             <div className="absolute h-full w-full rounded-full bg-white/80 blur-sm dark:bg-black/80" />
             <span className="z-20 text-black dark:text-white">{text}</span>
           </div>
-          <div className="group relative inline-block overflow-hidden rounded-2xl bg-gradient-to-b from-white/10 to-white/5 p-px shadow-lg backdrop-blur-lg transition-shadow duration-300 hover:shadow-xl">
-            {onButtonClick ? (
-              <button
-                type="button"
-                onClick={onButtonClick}
-                className={cn(
-                  "flex items-center gap-3 rounded-[1.15rem] border border-white/10 bg-black/80 px-6 py-3 text-base font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-black/70 hover:shadow-md group-hover:-translate-y-0.5 group-hover:shadow-lg",
-                  buttonClassName,
-                )}
-              >
-                <span className="opacity-90 transition-opacity group-hover:opacity-100">{buttonLabel}</span>
-                <span className="opacity-70 transition-all duration-300 group-hover:translate-x-1.5 group-hover:opacity-100">
-                  →
-                </span>
-              </button>
-            ) : (
-              <a
-                href={buttonHref}
-                className={cn(
-                  "flex items-center gap-3 rounded-[1.15rem] border border-white/10 bg-black/80 px-6 py-3 text-base font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-black/70 hover:shadow-md group-hover:-translate-y-0.5 group-hover:shadow-lg",
-                  buttonClassName,
-                )}
-              >
-                <span className="opacity-90 transition-opacity group-hover:opacity-100">{buttonLabel}</span>
-                <span className="opacity-70 transition-all duration-300 group-hover:translate-x-1.5 group-hover:opacity-100">
-                  →
-                </span>
-              </a>
-            )}
-          </div>
+
+          {description ? (
+            <div className="pointer-events-auto absolute left-1/2 bottom-0 w-full max-w-xl -translate-x-1/2 translate-y-[55%] sm:translate-y-[70%]">
+              <div className="rounded-3xl border border-white/50 bg-white/90 p-6 text-base leading-relaxed text-black/80 shadow-2xl shadow-black/15 backdrop-blur">
+                {description}
+              </div>
+            </div>
+          ) : (
+            <div className="group absolute left-1/2 bottom-8 inline-block overflow-hidden rounded-2xl bg-gradient-to-b from-white/10 to-white/5 p-px shadow-lg backdrop-blur-lg transition-shadow duration-300 hover:shadow-xl">
+              {onButtonClick ? (
+                <button
+                  type="button"
+                  onClick={onButtonClick}
+                  className={cn(
+                    "flex items-center gap-3 rounded-[1.15rem] border border-white/10 bg-black/80 px-6 py-3 text-base font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-black/70 hover:shadow-md group-hover:-translate-y-0.5 group-hover:shadow-lg",
+                    buttonClassName,
+                  )}
+                >
+                  <span className="opacity-90 transition-opacity group-hover:opacity-100">{buttonLabel}</span>
+                  <span className="opacity-70 transition-all duration-300 group-hover:translate-x-1.5 group-hover:opacity-100">
+                    →
+                  </span>
+                </button>
+              ) : (
+                <a
+                  href={buttonHref}
+                  className={cn(
+                    "flex items-center gap-3 rounded-[1.15rem] border border-white/10 bg-black/80 px-6 py-3 text-base font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-black/70 hover:shadow-md group-hover:-translate-y-0.5 group-hover:shadow-lg",
+                    buttonClassName,
+                  )}
+                >
+                  <span className="opacity-90 transition-opacity group-hover:opacity-100">{buttonLabel}</span>
+                  <span className="opacity-70 transition-all duration-300 group-hover:translate-x-1.5 group-hover:opacity-100">
+                    →
+                  </span>
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

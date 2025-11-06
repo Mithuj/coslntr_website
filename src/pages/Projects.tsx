@@ -26,7 +26,15 @@ const Projects = () => {
       },
       {
         name: "Research Solutions",
-        projects: [{ name: "Biomedical Imaging for Edge", href: "/projects/biomedical-imaging", highlight: true }],
+        projects: [
+          {
+            name: "Biomedical Imaging for Edge",
+            href: "/projects/biomedical-imaging",
+            highlight: true,
+            description:
+              "Recent advances in deep learning have substantially improved segmentation accuracy across a wide range of medical imaging tasks, including tissue classification, lesion detection, and boundary extraction. However, these methods remain computationally demanding, particularly for resource-constrained or portable diagnostic systems. Unlike conventional two-dimensional imaging, medical datasets are inherently volumetric and commonly represented as dense three-dimensional voxel grids. Each voxel contributes to a structured spatial tensor, requiring the entire volume to be processed to preserve geometric continuity. Although this regularity simplifies neighborhood indexing, it introduces significant redundancy: large homogeneous regions devoid of diagnostically relevant information must still be represented and computed. Consequently, voxel-based representations inflate memory usage, data-transfer bandwidth, and floating-point operations (FLOPs), thereby hindering real-time inference, energy efficiency, and scalability on embedded or edge computing platforms—limitations that are particularly restrictive in low-resource healthcare environments.",
+          },
+        ],
       },
     ],
     [],
@@ -207,7 +215,7 @@ const Projects = () => {
                         const hasHighlight = Boolean(project.highlight);
 
                         const containerClasses = hasDescription
-                          ? "relative w-full max-w-xl pb-48"
+                          ? "relative w-full max-w-xl pb-[28rem]"
                           : "w-full max-w-sm";
 
                         const actionProps = hasDescription

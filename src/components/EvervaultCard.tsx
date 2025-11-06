@@ -71,7 +71,7 @@ export const EvervaultCard: React.FC<EvervaultCardProps> = ({
           </div>
 
           {description ? (
-            <div className="pointer-events-auto absolute left-1/2 bottom-0 w-full max-w-xl -translate-x-1/2 translate-y-[55%] sm:translate-y-[70%]">
+            <div className="pointer-events-auto absolute left-1/2 top-full w-full max-w-xl -translate-x-1/2 mt-6 sm:mt-8">
               <div className="rounded-3xl border border-white/50 bg-white/90 p-6 text-base leading-relaxed text-black/80 shadow-2xl shadow-black/15 backdrop-blur">
                 {description}
               </div>

@@ -1,0 +1,365 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Sophisticated Dark Theme with High-Tech Neon Accents */
+    /* Usage: Background 60%, Text 30%, Brand 5%, Neon Accent 5% */
+  --background: 0 0% 0%;           /* #000000 - Pure black background (60%) */
+    --foreground: 0 0% 88%;          /* #E0E0E0 - Off-white text (30%) */
+
+  --card: 0 0% 0%;                 /* Match pure black background */
+    --card-foreground: 0 0% 88%;     /* #E0E0E0 - Off-white text */
+
+  --popover: 0 0% 0%;              /* Match pure black background */
+    --popover-foreground: 0 0% 88%;  /* #E0E0E0 - Off-white text */
+
+  --primary: 268 96% 72%;          /* #8B5CF6 - Vibrant purple for CTAs (5%) */
+    --primary-foreground: 0 0% 100%; /* White text on bright button */
+
+  --secondary: 274 17% 42%;        /* #685C79 - Muted purple-gray for secondary elements */
+    --secondary-foreground: 0 0% 88%; /* #E0E0E0 - Off-white text */
+
+  --muted: 0 0% 0%;                /* Use pure black for muted surfaces */
+    --muted-foreground: 0 0% 65%;    /* Muted text, less prominent */
+
+  --accent: 268 96% 72%;           /* #8B5CF6 - Vibrant purple accent for highlights */
+    --accent-foreground: 0 0% 100%;  /* White text on bright accent */
+
+    --destructive: 0 84% 60%;        /* Keep destructive red for errors */
+    --destructive-foreground: 0 0% 88%; /* #E0E0E0 - Off-white text */
+
+    --border: 0 0% 20%;              /* Subtle borders on dark background */
+    --input: 0 0% 15%;               /* Input fields slightly lighter */
+  --ring: 268 96% 72%;             /* #8B5CF6 - Vibrant purple focus ring */
+
+    --radius: 0.75rem;
+    
+    /* Custom variables for brand colors */
+  --brand: 274 17% 42%;            /* #685C79 - Muted purple-gray brand/logo (5%) */
+    --brand-foreground: 0 0% 88%;    /* #E0E0E0 - Off-white text */
+  --neon-accent: 268 96% 72%;      /* #8B5CF6 - Vibrant purple neon accent */
+    
+  --gradient-primary: linear-gradient(135deg, hsl(268 96% 72% / 0.2) 0%, hsl(274 17% 42% / 0.15) 100%);
+  --gradient-hero: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 0%) 100%);
+  --gradient-neon: linear-gradient(135deg, hsl(268 96% 72%) 0%, hsl(268 96% 82%) 100%);
+    --glass-bg: hsl(0 0% 10% / 0.8);
+    --glass-border: hsl(210 79% 56% / 0.2);
+    --shadow-glass: 0 8px 32px 0 hsl(210 79% 56% / 0.15);
+    --shadow-soft: 0 2px 8px 0 hsl(0 0% 0% / 0.3);
+    --shadow-neon: 0 0 20px hsl(210 79% 56% / 0.6), 0 0 40px hsl(210 79% 56% / 0.3);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --sidebar-background: 0 0% 0%;   /* #000000 - Match pure black background */
+    --sidebar-foreground: 0 0% 88%;  /* #E0E0E0 - Off-white text */
+  --sidebar-primary: 268 96% 72%;  /* #8B5CF6 - Vibrant purple for active nav */
+    --sidebar-primary-foreground: 0 0% 100%; /* White text */
+    --sidebar-accent: 0 0% 12%;      /* Slightly lighter for hover states */
+    --sidebar-accent-foreground: 0 0% 88%; /* #E0E0E0 - Off-white text */
+    --sidebar-border: 0 0% 20%;      /* Subtle borders */
+  --sidebar-ring: 268 96% 72%;     /* #8B5CF6 - Vibrant purple focus ring */
+  }
+
+  .dark {
+    /* Using same colors for dark mode since this IS a dark theme */
+    /* Usage: Background 60%, Text 30%, Brand 5%, Neon Accent 5% */
+  --background: 0 0% 0%;           /* #000000 - Pure black background (60%) */
+    --foreground: 0 0% 88%;          /* #E0E0E0 - Off-white text (30%) */
+
+  --card: 0 0% 0%;                 /* Match pure black background */
+    --card-foreground: 0 0% 88%;     /* #E0E0E0 - Off-white text */
+
+  --popover: 0 0% 0%;              /* Match pure black background */
+    --popover-foreground: 0 0% 88%;  /* #E0E0E0 - Off-white text */
+
+  --primary: 268 96% 72%;          /* #8B5CF6 - Vibrant purple for CTAs (5%) */
+    --primary-foreground: 0 0% 100%; /* White text on bright button */
+
+  --secondary: 274 17% 42%;        /* #685C79 - Muted purple-gray */
+    --secondary-foreground: 0 0% 88%; /* #E0E0E0 - Off-white text */
+
+  --muted: 0 0% 0%;                /* Use pure black for muted surfaces */
+    --muted-foreground: 0 0% 65%;    /* Muted text, less prominent */
+
+  --accent: 268 96% 72%;           /* #8B5CF6 - Vibrant purple accent */
+    --accent-foreground: 0 0% 100%;  /* White text on bright accent */
+
+    --destructive: 0 84% 60%;        /* Keep destructive red for errors */
+    --destructive-foreground: 0 0% 88%; /* #E0E0E0 - Off-white text */
+
+    --border: 0 0% 20%;              /* Subtle borders on dark background */
+    --input: 0 0% 15%;               /* Input fields slightly lighter */
+  --ring: 268 96% 72%;             /* #8B5CF6 - Vibrant purple focus ring */
+    
+  --brand: 274 17% 42%;            /* #685C79 - Muted purple-gray brand/logo (5%) */
+    --brand-foreground: 0 0% 88%;    /* #E0E0E0 - Off-white text */
+  --neon-accent: 268 96% 72%;      /* #8B5CF6 - Vibrant purple neon accent */
+    
+  --sidebar-background: 0 0% 0%;   /* #000000 - Match pure black background */
+    --sidebar-foreground: 0 0% 88%;  /* #E0E0E0 - Off-white text */
+  --sidebar-primary: 268 96% 72%;  /* #8B5CF6 - Vibrant purple for active nav */
+    --sidebar-primary-foreground: 0 0% 100%; /* White text */
+    --sidebar-accent: 0 0% 12%;      /* Slightly lighter for hover states */
+    --sidebar-accent-foreground: 0 0% 88%; /* #E0E0E0 - Off-white text */
+    --sidebar-border: 0 0% 20%;      /* Subtle borders */
+  --sidebar-ring: 268 96% 72%;     /* #8B5CF6 - Vibrant purple focus ring */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Moving Dot Card styles */
+.outer {
+  position: relative;
+  width: 16rem;
+  height: 11rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  perspective: 1200px;
+}
+
+.dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 30% 30%, #ffffff, #38bdf8 70%, #0ea5e9);
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.7), 0 0 40px rgba(14, 165, 233, 0.4);
+  transform: translate(-50%, -50%) rotate(0deg) translateX(9.5rem);
+  animation: orbit 6s linear infinite;
+}
+
+.card {
+  position: relative;
+  width: 14.5rem;
+  height: 9.5rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(145deg, rgba(19, 24, 34, 0.92), rgba(4, 4, 4, 0.85));
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: 0 35px 70px rgba(2, 6, 23, 0.65);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  backdrop-filter: blur(18px);
+}
+
+.ray {
+  position: absolute;
+  inset: -70% -30% auto;
+  height: 200%;
+  background: conic-gradient(from 180deg at 50% 50%, rgba(8, 145, 178, 0.1), rgba(14, 165, 233, 0.5), rgba(14, 165, 233, 0.05), transparent 70%);
+  opacity: 0.8;
+  animation: rayPulse 5s ease-in-out infinite;
+  transform: rotate(20deg);
+}
+
+.text {
+  position: relative;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #f8fafc;
+  text-shadow: 0 10px 30px rgba(56, 189, 248, 0.45);
+}
+
+.label {
+  position: relative;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.45em;
+  color: rgba(148, 163, 184, 0.85);
+}
+
+.line {
+  position: absolute;
+  background: linear-gradient(to right, transparent, rgba(56, 189, 248, 0.6), transparent);
+  opacity: 0.75;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.45);
+}
+
+.line.topl,
+.line.bottoml {
+  width: 70%;
+  height: 1px;
+  left: 15%;
+}
+
+.line.leftl,
+.line.rightl {
+  width: 1px;
+  height: 60%;
+  top: 20%;
+}
+
+.line.topl {
+  top: 16%;
+}
+
+.line.bottoml {
+  bottom: 16%;
+}
+
+.line.leftl {
+  left: 12%;
+}
+
+.line.rightl {
+  right: 12%;
+}
+
+@keyframes orbit {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(9.5rem);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) translateX(9.5rem);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(9.5rem);
+  }
+}
+
+@keyframes rayPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: rotate(10deg) scale(0.95);
+  }
+  50% {
+    opacity: 0.95;
+    transform: rotate(25deg) scale(1.05);
+  }
+}
+
+@media (max-width: 640px) {
+  .outer {
+    width: 13rem;
+    height: 9.5rem;
+  }
+
+  .card {
+    width: 12.5rem;
+    height: 8rem;
+  }
+
+  .text {
+    font-size: 2rem;
+  }
+
+  .dot {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(7.5rem);
+  }
+
+  @keyframes orbit {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg) translateX(7.5rem);
+    }
+    50% {
+      transform: translate(-50%, -50%) rotate(180deg) translateX(7.5rem);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg) translateX(7.5rem);
+    }
+  }
+}
+
+.marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: inline-flex;
+  align-items: center;
+  min-width: max-content;
+  will-change: transform;
+}
+
+.animate-marquee-left {
+  animation: marquee-left 18s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 18s linear infinite;
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.edge-highlight-left-top::before,
+.edge-highlight-left-top::after,
+.edge-highlight-right-bottom::before,
+.edge-highlight-right-bottom::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  background: transparent;
+}
+
+.edge-highlight-left-top::before {
+  top: 0;
+  left: 0;
+  height: 1px;
+  width: 60%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.45), transparent);
+}
+
+.edge-highlight-left-top::after {
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 60%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45), transparent);
+}
+
+.edge-highlight-right-bottom::before {
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  width: 60%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45));
+}
+
+.edge-highlight-right-bottom::after {
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  height: 60%;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.45));
+}

@@ -14,6 +14,7 @@ interface EvervaultCardProps {
   gradientClassName?: string;
   description?: string;
   allowOverflow?: boolean;
+  highlightText?: boolean;
 }
 
 export const EvervaultCard: React.FC<EvervaultCardProps> = ({
@@ -26,6 +27,7 @@ export const EvervaultCard: React.FC<EvervaultCardProps> = ({
   gradientClassName,
   description,
   allowOverflow = false,
+  highlightText = false,
 }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -43,6 +45,7 @@ export const EvervaultCard: React.FC<EvervaultCardProps> = ({
   };
 
   const shouldAllowOverflow = allowOverflow || Boolean(description);
+  const shouldHighlight = highlightText || Boolean(description);
 
   return (
     <div className={cn("p-0.5 bg-transparent aspect-square flex items-center justify-center w-full h-full relative", className)}>
@@ -56,6 +59,13 @@ export const EvervaultCard: React.FC<EvervaultCardProps> = ({
         <CardPattern mouseX={mouseX} mouseY={mouseY} randomString={randomString} gradientClassName={gradientClassName} />
         <div className="relative z-10 flex h-full w-full flex-col items-center justify-center">
           <div className="relative flex h-44 w-44 items-center justify-center rounded-full text-4xl font-bold text-white">
+            {shouldHighlight && (
+              <>
+                <span className="pointer-events-none absolute left-1/2 -bottom-5 h-10 w-32 -translate-x-1/2 rounded-full bg-white/85 blur-[60px] opacity-90" />
+                <span className="pointer-events-none absolute left-1/2 -bottom-9 h-14 w-40 -translate-x-1/2 rounded-full bg-white/45 blur-[100px] opacity-70" />
+                <span className="pointer-events-none absolute left-1/2 -bottom-12 h-20 w-48 -translate-x-1/2 rounded-full bg-white/30 blur-[140px] opacity-60" />
+              </>
+            )}
             <div className="absolute h-full w-full rounded-full bg-white/80 blur-sm dark:bg-black/80" />
             <span className="z-20 text-black dark:text-white">{text}</span>
           </div>

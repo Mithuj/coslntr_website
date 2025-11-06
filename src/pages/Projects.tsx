@@ -19,13 +19,14 @@ const Projects = () => {
             href: "/projects/mednyxa",
             description:
               "Mednyxa is a global telemedicine platform that connects patients with trusted doctors online through a fast and easy-to-use system. Our goal is to make healthcare more accessible for everyone by providing secure consultations, health guidance, and ongoing support anytime, anywhere. Mednyxa focuses on delivering quality care, smooth communication between patients and doctors, and a reliable digital healthcare experience through both mobile and web platforms.",
+            highlight: true,
           },
-          { name: "OptiLens", href: "/projects/optilens" },
+          { name: "OptiLens", href: "/projects/optilens", highlight: true },
         ],
       },
       {
         name: "Research Solutions",
-        projects: [{ name: "Biomedical Imaging for Edge", href: "/projects/biomedical-imaging" }],
+        projects: [{ name: "Biomedical Imaging for Edge", href: "/projects/biomedical-imaging", highlight: true }],
       },
     ],
     [],
@@ -203,6 +204,7 @@ const Projects = () => {
                     >
                       {category.projects.map((project) => {
                         const hasDescription = Boolean(project.description);
+                        const hasHighlight = Boolean(project.highlight);
 
                         const containerClasses = hasDescription
                           ? "relative w-full max-w-xl pb-48"
@@ -222,6 +224,7 @@ const Projects = () => {
                               text={project.name}
                               gradientClassName="bg-gradient-to-r from-white/80 via-white/45 to-white/20"
                               className="h-full"
+                              highlightText={hasHighlight}
                               {...actionProps}
                             />
                           </motion.div>

@@ -150,8 +150,25 @@ const Projects = () => {
                 const highlightClass = index % 2 === 0 ? "edge-highlight-left-top" : "edge-highlight-right-bottom";
                 const isActive = activeCategories.includes(category.name);
                 const hasProjects = category.projects.length > 0;
+                const hasExpandedAbove =
+                  index > 0 &&
+                  categories.slice(0, index).some((previousCategory) =>
+                    activeCategories.includes(previousCategory.name) && previousCategory.projects.length > 0,
+                  );
 
-                const items = [
+                const items: JSX.Element[] = [];
+
+                if (hasExpandedAbove) {
+                  items.push(
+                    <motion.div
+                      key={`divider-${category.name}`}
+                      layout
+                      className="col-span-1 my-4 h-px w-full bg-white/25 md:col-span-2"
+                    />,
+                  );
+                }
+
+                items.push(
                   <motion.div
                     key={`category-${category.name}`}
                     layout
@@ -166,7 +183,7 @@ const Projects = () => {
                       className="h-full"
                     />
                   </motion.div>,
-                ];
+                );
 
                 if (isActive && hasProjects) {
                   items.push(

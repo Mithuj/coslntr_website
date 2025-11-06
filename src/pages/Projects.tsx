@@ -7,7 +7,7 @@ import { EvervaultCard } from "@/components/EvervaultCard";
 import { fadeUp } from "@/lib/motion";
 
 const Projects = () => {
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [activeCategories, setActiveCategories] = useState<string[]>([]);
 
   const categories = useMemo(
     () => [
@@ -42,7 +42,13 @@ const Projects = () => {
   } as const;
 
   const toggleCategory = (name: string) => {
-    setActiveCategory((prev) => (prev === name ? null : name));
+    setActiveCategories((prev) => {
+      const isActive = prev.includes(name);
+      if (isActive) {
+        return prev.filter((category) => category !== name);
+      }
+      return [...prev, name];
+    });
   };
 
   return (
@@ -142,7 +148,7 @@ const Projects = () => {
             <AnimatePresence initial={false} mode="popLayout">
               {categories.flatMap((category, index) => {
                 const highlightClass = index % 2 === 0 ? "edge-highlight-left-top" : "edge-highlight-right-bottom";
-                const isActive = activeCategory === category.name;
+                const isActive = activeCategories.includes(category.name);
                 const hasProjects = category.projects.length > 0;
 
                 const items = [

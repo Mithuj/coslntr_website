@@ -26,10 +26,6 @@ const Projects = () => {
     [],
   );
 
-  const activeProjects = useMemo(() => {
-    return categories.find((category) => category.name === activeCategory)?.projects ?? [];
-  }, [activeCategory, categories]);
-
   const detailContainerVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -143,53 +139,60 @@ const Projects = () => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            {categories.map((category, index) => {
-              const positionClasses =
-                index === 1 ? "md:col-start-2 md:row-start-2 edge-highlight-right-bottom" : "edge-highlight-left-top";
-              const isActive = activeCategory === category.name;
-              return (
-                <motion.div
-                  key={category.name}
-                  variants={fadeUp}
-                  custom={index}
-                  className={`relative aspect-square ${positionClasses}`}
-                >
-                  <EvervaultCard
-                    text={category.name}
-                    onButtonClick={() => toggleCategory(category.name)}
-                    buttonLabel={isActive ? "Hide Projects" : "View Projects"}
-                    className="h-full"
-                  />
-                </motion.div>
-              );
-            })}
-          </motion.div>
+            <AnimatePresence initial={false} mode="popLayout">
+              {categories.flatMap((category, index) => {
+                const highlightClass = index % 2 === 0 ? "edge-highlight-left-top" : "edge-highlight-right-bottom";
+                const isActive = activeCategory === category.name;
+                const hasProjects = category.projects.length > 0;
 
-          <AnimatePresence mode="wait">
-            {activeCategory && activeProjects.length > 0 && (
-              <motion.div
-                key={activeCategory}
-                variants={detailContainerVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className={`mt-12 grid gap-10 ${activeProjects.length > 1 ? "md:grid-cols-2" : "md:grid-cols-1"} place-items-center`}
-              >
-                {activeProjects.map((project) => (
-                  <motion.div key={project.name} variants={detailCardVariants} className="w-full max-w-sm">
+                const items = [
+                  <motion.div
+                    key={`category-${category.name}`}
+                    layout
+                    variants={fadeUp}
+                    custom={index}
+                    className={`relative aspect-square ${highlightClass}`}
+                  >
                     <EvervaultCard
-                      text={project.name}
-                      buttonHref={project.href}
-                      buttonLabel="View Project"
-                      gradientClassName="bg-gradient-to-r from-white/80 via-white/45 to-white/20"
-                      buttonClassName="border-white/30 bg-white/75 text-black hover:bg-white/85"
+                      text={category.name}
+                      onButtonClick={() => toggleCategory(category.name)}
+                      buttonLabel={isActive ? "Hide Projects" : "View Projects"}
                       className="h-full"
                     />
-                  </motion.div>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
+                  </motion.div>,
+                ];
+
+                if (isActive && hasProjects) {
+                  items.push(
+                    <motion.div
+                      key={`projects-${category.name}`}
+                      layout
+                      variants={detailContainerVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      className="relative flex w-full flex-col gap-8"
+                    >
+                      {category.projects.map((project) => (
+                        <motion.div key={project.name} variants={detailCardVariants} className="w-full">
+                          <EvervaultCard
+                            text={project.name}
+                            buttonHref={project.href}
+                            buttonLabel="View Project"
+                            gradientClassName="bg-gradient-to-r from-white/80 via-white/45 to-white/20"
+                            buttonClassName="border-white/30 bg-white/75 text-black hover:bg-white/85"
+                            className="h-full"
+                          />
+                        </motion.div>
+                      ))}
+                    </motion.div>,
+                  );
+                }
+
+                return items;
+              })}
+            </AnimatePresence>
+          </motion.div>
         </motion.div>
       </section>
 

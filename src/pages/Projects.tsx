@@ -163,7 +163,7 @@ const Projects = () => {
                     <motion.div
                       key={`divider-${category.name}`}
                       layout
-                      className="col-span-1 my-4 h-px w-full bg-white/25 md:col-span-2"
+                      className="col-span-1 my-4 h-[2px] w-full bg-white/35 md:col-span-2"
                     />,
                   );
                 }

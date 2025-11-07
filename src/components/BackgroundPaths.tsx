@@ -97,7 +97,7 @@ export function BackgroundPaths({ title = 'Background Paths' }: BackgroundPathsP
             >
               <span className="transition-opacity opacity-90 group-hover:opacity-100">Discover Excellence</span>
               <span className="ml-3 transition-all duration-300 opacity-70 group-hover:translate-x-1.5 group-hover:opacity-100">
-                →
+              
               </span>
             </Button>
           </div>

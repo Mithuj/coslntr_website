@@ -33,7 +33,7 @@ export const GoogleGeminiEffect = ({
       </p>
       <div className="absolute inset-x-0 -top-40 flex h-[540px] w-full items-center justify-center sm:-top-48 sm:h-[620px] md:-top-60 md:h-[720px] lg:h-[840px] xl:h-[900px]">
         <button className="z-30 mx-auto mt-8 w-fit rounded-full bg-white px-3 py-1 text-xs font-bold text-black shadow-md md:mt-24 md:px-4 md:py-2 md:text-base">
-          ui.aceternity.com
+          cosintr.com
         </button>
       </div>
       <svg

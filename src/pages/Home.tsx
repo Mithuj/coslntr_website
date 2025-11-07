@@ -33,10 +33,10 @@ const Home = () => {
               Signal In The Noise
             </p>
             <h2 className="text-3xl font-semibold text-white sm:text-4xl">
-              Real-time momentum across our legal intelligence network
+              Real-time momentum across our AI intelligence network
             </h2>
             <p className="max-w-2xl text-sm text-muted-foreground">
-              We track the pulse of global jurisprudence to surface the signals that matter. Each metric below reflects the velocity of engagement across our core services.
+              We analyze the global flow of research, innovation, and breakthroughs to uncover the signals that truly matter. Each metric below reflects the velocity of discovery and engagement across our core AI research platforms.
             </p>
           </div>
           <div className="flex w-full flex-col gap-10">

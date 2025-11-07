@@ -1,10 +1,51 @@
+import { Zap, Brain, Lightbulb } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { BackgroundPaths } from "@/components/BackgroundPaths";
 import { GeminiSection } from "@/components/GeminiSection";
 import DotCard from "@/components/DotCard";
+import GlassCard from "@/components/GlassCard";
 import logo from "@/assets/coslntr-logo.png";
+
+const featuredServices = [
+  {
+    icon: Zap,
+    title: "AI-Based Automation Solutions",
+    description:
+      "Revolutionize your business with intelligent AI automation that learns, adapts, and enhances productivity. We create smart systems that handle complex processes with precision and speed.",
+    features: [
+      "Predictive Process Automation",
+      "Intelligent Workflow Management",
+      "Smart Data Processing",
+      "Adaptive Decision Systems",
+    ],
+  },
+  {
+    icon: Brain,
+    title: "Deep AI Research Solutions",
+    description:
+      "Accelerate innovation through our advanced AI research services. We explore cutting-edge models and algorithms to solve real-world challenges and power next-generation applications.",
+    features: [
+      "Machine Learning Model Development",
+      "Deep Neural Network Optimization",
+      "Computer Vision & NLP Research",
+      "AI Model Evaluation & Deployment",
+    ],
+  },
+  {
+    icon: Lightbulb,
+    title: "AI-Based R&D Software Solutions",
+    description:
+      "Empower your R&D teams with intelligent AI tools that streamline experimentation, automate analysis, and drive data-driven discovery.",
+    features: [
+      "AI-Powered Data Analysis",
+      "Automated Experiment Tracking",
+      "Research Workflow Integration",
+      "Insight Generation Tools",
+    ],
+  },
+];
 
 const Home = () => {
   return (
@@ -25,6 +66,56 @@ const Home = () => {
       <BackgroundPaths title="Discover Excellence" />
 
       <GeminiSection />
+
+      <section className="relative isolate overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
+        <div className="pointer-events-none absolute inset-0">
+          <span className="absolute -top-20 right-1/4 h-64 w-64 rounded-full bg-cyan-500/20 blur-3xl" />
+          <span className="absolute -bottom-16 left-1/5 h-72 w-72 rounded-full bg-fuchsia-500/15 blur-3xl" />
+        </div>
+        <div className="container relative z-10 mx-auto max-w-6xl space-y-12">
+          <div className="text-center space-y-4">
+            <p className="text-sm uppercase tracking-[0.35em] text-muted-foreground">What We Deliver</p>
+            <h2 className="text-3xl font-semibold text-white sm:text-4xl">Highlighted AI Services</h2>
+            <p className="mx-auto max-w-3xl text-sm text-muted-foreground">
+              Discover a snapshot of the core solutions our teams are building today. For the full suite of offerings, explore the dedicated services page and see how we can collaborate.
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {featuredServices.map((service) => (
+              <GlassCard key={service.title} className="relative h-full overflow-hidden border border-white/10 bg-white/5 p-8 text-white shadow-[0_30px_70px_rgba(12,20,46,0.4)]">
+                <span className="pointer-events-none absolute -top-24 right-0 h-40 w-40 rounded-full bg-white/15 blur-3xl" />
+                <span className="pointer-events-none absolute -bottom-24 left-0 h-40 w-40 rounded-full bg-cyan-300/20 blur-3xl" />
+                <div className="relative flex h-full flex-col gap-6">
+                  <div className="flex items-center gap-3">
+                    <service.icon className="h-10 w-10 text-cyan-300" />
+                    <h3 className="text-xl font-semibold leading-tight">{service.title}</h3>
+                  </div>
+                  <p className="text-sm text-neutral-200/90 leading-relaxed">{service.description}</p>
+                  <ul className="space-y-3 text-xs text-neutral-200/85">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2">
+                        <span className="mt-1 flex h-2 w-2 flex-shrink-0 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(103,232,249,0.7)]" />
+                        <span className="leading-relaxed">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </GlassCard>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <a
+              href="/services"
+              className="group inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold tracking-wide text-white transition-all duration-300 hover:border-white/35 hover:bg-white/20"
+            >
+              View All Services
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
 
       <section className="bg-black py-16 md:py-20">
         <div className="container mx-auto flex max-w-5xl flex-col gap-10 px-6">

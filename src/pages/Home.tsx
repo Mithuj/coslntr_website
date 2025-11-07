@@ -10,7 +10,7 @@ const Home = () => {
     <div className="min-h-screen bg-gradient-hero">
       <Navigation />
       <Hero
-        eyebrow="POWERED BY COSLNTR"
+        eyebrow="POWERED BY COSINTR"
         title="From World Laws to Working Intelligence"
         subtitle="Translating first principles into deployable systems."
         ctaLabel="Get Started"
@@ -38,19 +38,19 @@ const Home = () => {
             <div className="flex w-full flex-col gap-3">
               <DotCard target={777000} duration={2200} className="self-start" />
               <span className="pl-4 text-xs uppercase tracking-[0.35em] text-muted-foreground">
-                Knowledge Base Views
+                Successfully completed Projects
               </span>
             </div>
             <div className="flex w-full flex-col items-center gap-3">
               <DotCard target={1250000} duration={2600} className="self-center" />
               <span className="text-xs uppercase tracking-[0.35em] text-muted-foreground">
-                Live Compliance Audits
+                PROFESSIONALS
               </span>
             </div>
             <div className="flex w-full flex-col items-end gap-3">
               <DotCard target={980000} duration={2400} className="self-end" />
               <span className="pr-4 text-xs uppercase tracking-[0.35em] text-muted-foreground">
-                Predictive Case Runs
+                HAPPIEST WORLDWIDE CUSTOMERS.
               </span>
             </div>
           </div>

@@ -34,7 +34,7 @@ export const GeminiSection = () => {
       <div className="relative mx-auto flex h-full w-full flex-col items-center justify-start">
         <GoogleGeminiEffect
           pathLengths={pathLengths}
-          title="Powered by Coslntr"
+          title="Powered by COSINTR"
           description="Scroll to uncover how our teams blend law, AI, and engineering into resilient systems."
           className="mx-auto w-full"
         />

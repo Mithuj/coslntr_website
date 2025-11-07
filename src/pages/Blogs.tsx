@@ -8,56 +8,7 @@ import { useParallax } from "@/hooks/use-parallax";
 import { fadeUp, fadeLeft, fadeRight, scaleUp, staggerFade } from "@/lib/motion";
 
 const Blogs = () => {
-  const blogs = [
-    {
-      title: "The Future of AI in Healthcare",
-      excerpt: "Exploring how artificial intelligence is revolutionizing patient care, diagnostics, and medical research in 2024 and beyond.",
-      author: "Dr. Priya Sharma",
-      date: "March 15, 2024",
-      category: "AI & Healthcare",
-      readTime: "5 min read",
-    },
-    {
-      title: "Building Scalable E-commerce Platforms",
-      excerpt: "Best practices and architectural patterns for creating high-performance e-commerce solutions that can handle millions of users.",
-      author: "Tech Team",
-      date: "March 10, 2024",
-      category: "Development",
-      readTime: "7 min read",
-    },
-    {
-      title: "Automation: The Key to Business Efficiency",
-      excerpt: "How intelligent automation is helping businesses reduce costs, improve accuracy, and free up human resources for strategic work.",
-      author: "Automation Experts",
-      date: "March 5, 2024",
-      category: "Business",
-      readTime: "6 min read",
-    },
-    {
-      title: "Machine Learning Models in Production",
-      excerpt: "A comprehensive guide to deploying, monitoring, and maintaining machine learning models in real-world applications.",
-      author: "AI Research Team",
-      date: "February 28, 2024",
-      category: "Machine Learning",
-      readTime: "10 min read",
-    },
-    {
-      title: "Tele-medicine: Bridging Healthcare Gaps",
-      excerpt: "How tele-medical applications like Mednyxa are making healthcare accessible to remote areas and underserved communities.",
-      author: "Healthcare Division",
-      date: "February 20, 2024",
-      category: "Healthcare",
-      readTime: "5 min read",
-    },
-    {
-      title: "The Rise of No-Code AI Solutions",
-      excerpt: "Democratizing artificial intelligence with user-friendly tools that allow businesses to leverage AI without extensive technical knowledge.",
-      author: "Product Team",
-      date: "February 15, 2024",
-      category: "AI Technology",
-      readTime: "4 min read",
-    },
-  ];
+  const blogs = [];
 
   const featuredParallax = useParallax({ distance: 150 });
   const gridParallax = useParallax({ distance: 140 });
@@ -155,9 +106,9 @@ const Blogs = () => {
           <motion.div variants={scaleUp}>
             <GlassCard className="overflow-hidden">
               <div className="grid md:grid-cols-2 gap-8">
-                <motion.div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20" variants={fadeLeft} />
+                <motion.div className="aspect-video bg-gradient-to-br from-white/25 via-white/15 to-white/5" variants={fadeLeft} />
                 <motion.div className="p-8 flex flex-col justify-center" variants={fadeRight}>
-                  <div className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full mb-4 w-fit">
+                  <div className="inline-block px-3 py-1 bg-white/15 text-white text-xs font-medium rounded-full mb-4 w-fit">
                     Featured Post
                   </div>
                   <h2 className="text-3xl font-bold text-foreground mb-4">
@@ -168,12 +119,12 @@ const Blogs = () => {
                   </p>
                   <div className="flex items-center text-sm text-muted-foreground mb-6">
                     <User size={16} className="mr-2" />
-                    <span className="mr-4">Engineering Team</span>
+                    <span className="mr-4">cosIntr Team</span>
                     <Calendar size={16} className="mr-2" />
-                    <span>March 20, 2024</span>
+                    <span>November 25, 2025</span>
                   </div>
-                  <button className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors">
-                    Read More <ArrowRight size={16} className="ml-2" />
+                  <button className="inline-flex items-center text-white font-medium hover:text-white/80 transition-colors">
+                    Coming soon <ArrowRight size={16} className="ml-2" />
                   </button>
                 </motion.div>
               </div>
@@ -192,41 +143,53 @@ const Blogs = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            {blogs.map((blog, index) => (
-              <motion.div key={blog.title} variants={staggerFade} custom={index}>
-                <GlassCard className="overflow-hidden flex flex-col h-full">
-                  <motion.div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10" variants={fadeUp} />
-                  <div className="p-6 flex-1 flex flex-col">
-                    <div className="inline-block px-3 py-1 bg-muted text-foreground text-xs font-medium rounded-full mb-3 w-fit">
-                      {blog.category}
-                    </div>
-                    <h3 className="text-xl font-bold text-foreground mb-3">{blog.title}</h3>
-                    <p className="text-muted-foreground text-sm mb-4 flex-1">{blog.excerpt}</p>
-                    <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                      <div className="flex items-center">
-                        <User size={14} className="mr-1" />
-                        <span>{blog.author}</span>
+          {blogs.length > 0 ? (
+            <motion.div
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {blogs.map((blog, index) => (
+                <motion.div key={blog.title} variants={staggerFade} custom={index}>
+                  <GlassCard className="overflow-hidden flex flex-col h-full">
+                    <motion.div className="aspect-video bg-gradient-to-br from-white/20 via-white/12 to-white/5" variants={fadeUp} />
+                    <div className="p-6 flex-1 flex flex-col">
+                      <div className="inline-block px-3 py-1 bg-muted text-foreground text-xs font-medium rounded-full mb-3 w-fit">
+                        {blog.category}
                       </div>
-                      <span>{blog.readTime}</span>
+                      <h3 className="text-xl font-bold text-foreground mb-3">{blog.title}</h3>
+                      <p className="text-muted-foreground text-sm mb-4 flex-1">{blog.excerpt}</p>
+                      <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
+                        <div className="flex items-center">
+                          <User size={14} className="mr-1" />
+                          <span>{blog.author}</span>
+                        </div>
+                        <span>{blog.readTime}</span>
+                      </div>
+                      <div className="flex items-center text-xs text-muted-foreground mb-4">
+                        <Calendar size={14} className="mr-1" />
+                        <span>{blog.date}</span>
+                      </div>
+                      <button className="inline-flex items-center text-white font-medium text-sm hover:text-white/80 transition-colors">
+                        Read Article <ArrowRight size={14} className="ml-2" />
+                      </button>
                     </div>
-                    <div className="flex items-center text-xs text-muted-foreground mb-4">
-                      <Calendar size={14} className="mr-1" />
-                      <span>{blog.date}</span>
-                    </div>
-                    <button className="inline-flex items-center text-primary font-medium text-sm hover:text-primary/80 transition-colors">
-                      Read Article <ArrowRight size={14} className="ml-2" />
-                    </button>
-                  </div>
-                </GlassCard>
-              </motion.div>
-            ))}
-          </motion.div>
+                  </GlassCard>
+                </motion.div>
+              ))}
+            </motion.div>
+          ) : (
+            <motion.div
+              className="rounded-3xl border border-white/10 bg-white/5 p-10 text-center text-muted-foreground backdrop-blur"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              Stay tuned—new articles are on the way.
+            </motion.div>
+          )}
         </motion.div>
       </section>
 
@@ -256,9 +219,14 @@ const Blogs = () => {
                 placeholder="Enter your email"
                 className="flex-1 px-4 py-3 rounded-lg border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
-              <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity font-medium">
-                Subscribe
-              </button>
+              <div className="group relative inline-flex overflow-hidden rounded-2xl bg-gradient-to-b from-white/10 to-white/5 p-px shadow-lg backdrop-blur-lg transition-shadow duration-300 hover:shadow-xl">
+                <button className="flex items-center gap-3 rounded-[1.15rem] border border-white/10 bg-black/80 px-8 py-3 text-base font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-black/70 hover:shadow-md group-hover:-translate-y-0.5 group-hover:shadow-lg">
+                  <span className="opacity-90 transition-opacity group-hover:opacity-100">Subscribe</span>
+                  <span className="opacity-70 transition-all duration-300 group-hover:translate-x-1.5 group-hover:opacity-100">
+                    →
+                  </span>
+                </button>
+              </div>
             </motion.div>
           </GlassCard>
         </motion.div>

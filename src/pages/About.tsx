@@ -92,12 +92,12 @@ const TimelineEntry = ({ item, index }: TimelineEntryProps) => {
 
 const About = () => {
   const timeline: TimelineItem[] = [
-    { year: "2019", event: "Company Founded", description: "Coslntr was established in Colombo 6, Srilanka" },
-    { year: "2020", event: "First Major Project", description: "Delivered enterprise automation solution" },
-    { year: "2021", event: "Team Expansion", description: "Grew to 10+ talented professionals" },
-    { year: "2022", event: "Mednyxa Launch", description: "Released our flagship tele-medical application" },
-    { year: "2023", event: "AI Research Division", description: "Established dedicated AI R&D team" },
-    { year: "2024", event: "15 Team Members", description: "Expanded to 15-member strong team" },
+    { year: "2023", event: "Company Founded", description: "COSINTR was established in Colombo 6, Srilanka" },
+    { year: "2023 March", event: "First Major Project", description: "Delivered enterprise automation solution" },
+    { year: "2024 April", event: "Team Expansion", description: "Grew to 10+ talented professionals" },
+    { year: "2025", event: "Mednyxa", description: "We have planned and started our research and development." },
+    { year: "2025 March", event: "AI Research Division", description: "Established dedicated AI R&D team" },
+    { year: "2025 June", event: "Optilens", description: "We have planned and started our research and development of Optilens" },
   ];
 
   const values = [
@@ -138,13 +138,13 @@ const About = () => {
         >
           <motion.div variants={fadeUp}>
             <AnimatedText
-              text="About Coslntr"
+              text="About COSINTR"
               className="py-0"
               textClassName="!text-5xl md:!text-7xl"
             />
           </motion.div>
           <motion.p className="text-lg text-muted-foreground max-w-2xl mx-auto" variants={fadeUp}>
-            Innovating technology solutions in Colombo 6, Srilanka since 2019
+            Innovating technology solutions in Colombo 6, Srilanka since 2023
           </motion.p>
         </motion.div>
       </section>
@@ -218,7 +218,7 @@ const About = () => {
               <motion.div variants={fadeLeft} className="max-w-3xl">
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Who We Are</h2>
                 <p className="text-muted-foreground mb-4">
-                  Coslntr is a premier IT company based in Colombo 6, Srilanka, specializing in artificial intelligence, automation, and innovative software development. With a team of 15 dedicated professionals, we transform businesses through intelligent technology solutions.
+                  COSINTR is a premier IT company based in Colombo 6, Srilanka, specializing in artificial intelligence, automation, and innovative software development. With a team of 15 dedicated professionals, we transform businesses through intelligent technology solutions.
                 </p>
                 <p className="text-muted-foreground mb-4">
                   Our expertise spans across AI-based research and development, e-commerce platforms, medical applications, and custom software solutions. We pride ourselves on delivering high-quality products that solve real-world problems.
@@ -244,7 +244,7 @@ const About = () => {
         >
           <motion.div className="text-center mb-12" variants={fadeUp}>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Journey</h2>
-            <p className="text-muted-foreground">Growing and evolving since 2019</p>
+            <p className="text-muted-foreground">Growing and evolving since 2023</p>
           </motion.div>
           <div className="relative">
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-border hidden md:block"></div>

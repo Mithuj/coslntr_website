@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="relative overflow-hidden border-t border-border bg-background">
       <FooterBackgroundGradient />
       <div className="relative z-10 flex flex-col items-center gap-8 px-6 py-20 text-center">
-        <TextHoverEffect text="Coslntr" className="h-36 w-full max-w-4xl" />
+        <TextHoverEffect text="COSINTR" className="h-36 w-full max-w-4xl" />
         <p className="max-w-2xl text-sm text-muted-foreground">
           From World Laws to Working Intelligence
         </p>
@@ -27,7 +27,7 @@ const Footer = () => {
         </div>
 
         <p className="text-xs text-muted-foreground/70">
-          © {new Date().getFullYear()} Coslntr. All rights reserved.
+          © {new Date().getFullYear()} COSINTR. All rights reserved.
         </p>
       </div>
     </footer>

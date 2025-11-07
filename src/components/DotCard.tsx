@@ -6,12 +6,16 @@ interface DotCardProps {
   target?: number;
   duration?: number;
   className?: string;
+  suffix?: string;
+  label?: string;
 }
 
 const DotCard = ({
   target = 777000,
   duration = 2000,
   className,
+  suffix = "",
+  label = "Projects",
 }: DotCardProps) => {
   const [count, setCount] = useState(0);
 
@@ -32,7 +36,8 @@ const DotCard = ({
     return () => clearInterval(timer);
   }, [target, duration]);
 
-  const display = count < 1000 ? `${count}` : `${Math.floor(count / 1000)}k`;
+  const displayNumber = count < 1000 ? `${count}` : `${Math.floor(count / 1000)}k`;
+  const display = `${displayNumber}${suffix}`;
 
   return (
     <div className={`outer ${className ?? ""}`}>
@@ -40,7 +45,7 @@ const DotCard = ({
       <div className="card">
         <div className="ray" />
         <div className="text">{display}</div>
-        <div className="label">Projects</div>
+        <div className="label">{label}</div>
         <div className="line topl" />
         <div className="line leftl" />
         <div className="line bottoml" />

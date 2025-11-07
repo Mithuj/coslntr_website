@@ -4,6 +4,7 @@ import { Hero } from "@/components/Hero";
 import { BackgroundPaths } from "@/components/BackgroundPaths";
 import { GeminiSection } from "@/components/GeminiSection";
 import DotCard from "@/components/DotCard";
+import logo from "@/assets/coslntr-logo.png";
 
 const Home = () => {
   return (
@@ -16,6 +17,10 @@ const Home = () => {
         ctaLabel="Get Started"
         ctaHref="/contact"
       />
+
+      <div className="flex justify-center py-12">
+        <img src={logo} alt="COSINTR" className="h-20 w-auto opacity-90" />
+      </div>
 
       <BackgroundPaths title="Discover Excellence" />
 
@@ -36,19 +41,19 @@ const Home = () => {
           </div>
           <div className="flex w-full flex-col gap-10">
             <div className="flex w-full flex-col gap-3">
-              <DotCard target={777000} duration={2200} className="self-start" />
+              <DotCard target={30} suffix="+" label="Projects" duration={2200} className="self-start" />
               <span className="pl-4 text-xs uppercase tracking-[0.35em] text-muted-foreground">
                 Successfully completed Projects
               </span>
             </div>
             <div className="flex w-full flex-col items-center gap-3">
-              <DotCard target={1250000} duration={2600} className="self-center" />
+              <DotCard target={15} suffix="+" label="Professionals" duration={2600} className="self-center" />
               <span className="text-xs uppercase tracking-[0.35em] text-muted-foreground">
                 PROFESSIONALS
               </span>
             </div>
             <div className="flex w-full flex-col items-end gap-3">
-              <DotCard target={980000} duration={2400} className="self-end" />
+              <DotCard target={25} suffix="+" label="Customers" duration={2400} className="self-end" />
               <span className="pr-4 text-xs uppercase tracking-[0.35em] text-muted-foreground">
                 HAPPIEST WORLDWIDE CUSTOMERS.
               </span>

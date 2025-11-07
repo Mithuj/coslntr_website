@@ -19,7 +19,7 @@ const Home = () => {
       />
 
       <div className="flex justify-center py-12">
-        <img src={logo} alt="COSINTR" className="h-20 w-auto opacity-90" />
+        <img src={logo} alt="COSINTR" className="h-56 w-auto opacity-90 md:h-64" />
       </div>
 
       <BackgroundPaths title="Discover Excellence" />

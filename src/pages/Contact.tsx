@@ -21,10 +21,23 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const subject = formData.subject.trim() || "New enquiry from COSINTR website";
+    const bodyLines = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      "",
+      formData.message,
+    ];
+  const mailtoHref = `mailto:hello@cosintr.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+
+    window.location.href = mailtoHref;
+
     toast({
-      title: "Message Sent!",
-      description: "We'll get back to you as soon as possible.",
+      title: "Opening your email client…",
+      description: "Review the draft message to send it to hello@cosintr.com.",
     });
+
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
 

@@ -6,11 +6,24 @@ import { AnimatedText } from "@/components/ui/animated-text";
 import { EvervaultCard } from "@/components/EvervaultCard";
 import { fadeUp } from "@/lib/motion";
 
+type ProjectItem = {
+  name: string;
+  href: string;
+  description?: string;
+  highlight?: boolean;
+  animation?: "pulse" | "float" | "glow";
+};
+
+type CategoryItem = {
+  name: string;
+  projects: ProjectItem[];
+};
+
 const Projects = () => {
   const [activeCategories, setActiveCategories] = useState<string[]>([]);
 
   const categories = useMemo(
-    () => [
+    (): CategoryItem[] => [
       {
         name: "Industrial Products",
         projects: [
@@ -20,8 +33,9 @@ const Projects = () => {
             description:
               "Mednyxa is a global telemedicine platform that connects patients with trusted doctors online through a fast and easy-to-use system. Our goal is to make healthcare more accessible for everyone by providing secure consultations, health guidance, and ongoing support anytime, anywhere. Mednyxa focuses on delivering quality care, smooth communication between patients and doctors, and a reliable digital healthcare experience through both mobile and web platforms.",
             highlight: true,
+            animation: "pulse",
           },
-          { name: "OptiLens", href: "/projects/optilens", highlight: true },
+          { name: "OptiLens", href: "/projects/optilens", highlight: true, animation: "float" },
         ],
       },
       {
@@ -31,6 +45,7 @@ const Projects = () => {
             name: "Biomedical Imaging for Edge",
             href: "/projects/biomedical-imaging",
             highlight: true,
+            animation: "glow",
             description:
               "Recent advances in deep learning have greatly improved segmentation accuracy in medical imaging tasks such as tissue classification, lesion detection, and boundary extraction. However, these methods are still computationally intensive, especially for resource-limited or portable diagnostic systems. Medical datasets are volumetric and typically represented as dense 3D voxel grids, requiring full-volume processing to maintain spatial continuity. This structure introduces redundancy, as large homogeneous regions without diagnostic value still consume memory and computation. As a result, voxel-based representations increase memory usage, data transfer, and FLOPs, limiting real-time performance and energy efficiency on embedded or edge devices—challenges that are critical in low-resource healthcare settings.",
           },
@@ -233,6 +248,7 @@ const Projects = () => {
                               gradientClassName="bg-gradient-to-r from-white/80 via-white/45 to-white/20"
                               className="h-full"
                               highlightText={hasHighlight}
+                              animatedText={project.animation ?? false}
                               {...actionProps}
                             />
                           </motion.div>

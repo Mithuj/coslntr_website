@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { motion, useMotionTemplate, useMotionValue, type TargetAndTransition, type Transition } from "framer-motion";
 import { cn } from "@/lib/utils";
+
+type AnimatedTextVariant = "pulse" | "float" | "glow";
 
 interface EvervaultCardProps {
   text?: string;
@@ -15,6 +17,7 @@ interface EvervaultCardProps {
   description?: string;
   allowOverflow?: boolean;
   highlightText?: boolean;
+  animatedText?: boolean | AnimatedTextVariant;
 }
 
 export const EvervaultCard: React.FC<EvervaultCardProps> = ({
@@ -28,6 +31,7 @@ export const EvervaultCard: React.FC<EvervaultCardProps> = ({
   description,
   allowOverflow = false,
   highlightText = false,
+  animatedText = false,
 }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -46,6 +50,31 @@ export const EvervaultCard: React.FC<EvervaultCardProps> = ({
 
   const shouldAllowOverflow = allowOverflow || Boolean(description);
   const shouldHighlight = highlightText || Boolean(description);
+  const resolvedAnimation = typeof animatedText === "string" ? animatedText : animatedText ? "pulse" : undefined;
+
+  const animatedTextConfigs: Record<AnimatedTextVariant, { animate: TargetAndTransition; transition: Transition }> = {
+    pulse: {
+      animate: { scale: [1, 1.07, 1], opacity: [0.92, 1, 0.92] },
+      transition: { duration: 2.8, repeat: Infinity, ease: "easeInOut" },
+    },
+    float: {
+      animate: { y: [0, -6, 0], rotate: [0, -1.5, 0, 1.5, 0] },
+      transition: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+    },
+    glow: {
+      animate: {
+        textShadow: [
+          "0 0 12px rgba(168, 206, 255, 0.25)",
+          "0 0 18px rgba(129, 233, 255, 0.65)",
+          "0 0 12px rgba(168, 206, 255, 0.25)",
+        ],
+        color: ["#0f172a", "#0ea5e9", "#0f172a"],
+      },
+      transition: { duration: 3.4, repeat: Infinity, ease: "easeInOut" },
+    },
+  };
+
+  const animatedConfig = resolvedAnimation ? animatedTextConfigs[resolvedAnimation] : undefined;
 
   return (
     <div className={cn("p-0.5 bg-transparent aspect-square flex items-center justify-center w-full h-full relative", className)}>
@@ -67,7 +96,17 @@ export const EvervaultCard: React.FC<EvervaultCardProps> = ({
               </>
             )}
             <div className="absolute h-full w-full rounded-full bg-white/80 blur-sm dark:bg-black/80" />
-            <span className="z-20 text-black dark:text-white">{text}</span>
+            {animatedConfig ? (
+              <motion.span
+                className="z-20 text-black dark:text-white"
+                animate={animatedConfig.animate}
+                transition={animatedConfig.transition}
+              >
+                {text}
+              </motion.span>
+            ) : (
+              <span className="z-20 text-black dark:text-white">{text}</span>
+            )}
           </div>
 
           {description ? (

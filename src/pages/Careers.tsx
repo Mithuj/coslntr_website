@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -64,6 +65,15 @@ const positions: Position[] = [
 ];
 
 const Careers = () => {
+  const [expandedPositions, setExpandedPositions] = useState<Record<string, boolean>>({});
+
+  const togglePosition = (title: string) => {
+    setExpandedPositions((prev) => ({
+      ...prev,
+      [title]: !prev[title],
+    }));
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -96,8 +106,11 @@ const Careers = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          {positions.map((position, index) => (
-            <motion.div key={position.title} variants={staggerFade} custom={index}>
+          {positions.map((position, index) => {
+            const isExpanded = Boolean(expandedPositions[position.title]);
+
+            return (
+              <motion.div key={position.title} variants={staggerFade} custom={index}>
               <GlassCard className="relative overflow-hidden border border-white/10 bg-white/5 p-8 sm:p-10 text-white shadow-[0_40px_80px_rgba(6,17,64,0.35)]">
                 <span className="pointer-events-none absolute -top-32 -right-16 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl" />
                 <span className="pointer-events-none absolute -bottom-32 -left-10 h-64 w-64 rounded-full bg-fuchsia-400/20 blur-3xl" />
@@ -108,9 +121,6 @@ const Careers = () => {
                       <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
                         {position.title}
                       </h2>
-                      <p className="text-sm text-neutral-200/80 max-w-2xl">
-                        {position.about}
-                      </p>
                     </div>
                     <div className="flex flex-wrap gap-2 text-xs uppercase tracking-wide text-black">
                       <span className="rounded-full bg-white/80 px-3 py-1 font-semibold">
@@ -122,49 +132,76 @@ const Careers = () => {
                     </div>
                   </div>
 
-                  <div className="grid gap-8 md:grid-cols-2">
-                    <motion.div variants={fadeUp} className="space-y-4">
-                      <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-200/90">
-                        Key Responsibilities
-                      </h3>
-                      <ul className="space-y-3 text-sm text-neutral-100/90">
-                        {position.responsibilities.map((item) => (
-                          <li key={item} className="flex items-start gap-3">
-                            <span className="mt-1 flex h-2.5 w-2.5 flex-shrink-0 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.8)]" />
-                            <span className="leading-relaxed">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </motion.div>
+                  <p className="text-sm text-neutral-200/80 max-w-2xl">
+                    {position.about}
+                  </p>
 
-                    <motion.div variants={fadeUp} className="space-y-4">
-                      <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-fuchsia-200/90">
-                        Requirements
-                      </h3>
-                      <ul className="space-y-3 text-sm text-neutral-100/90">
-                        {position.requirements.map((item) => (
-                          <li key={item} className="flex items-start gap-3">
-                            <span className="mt-1 flex h-2.5 w-2.5 flex-shrink-0 rounded-full bg-fuchsia-300 shadow-[0_0_12px_rgba(244,114,182,0.8)]" />
-                            <span className="leading-relaxed">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <motion.button
+                      type="button"
+                      variants={fadeUp}
+                      className="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/10 px-6 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white transition-all duration-300 hover:border-white/45 hover:bg-white/20"
+                      onClick={() => togglePosition(position.title)}
+                    >
+                      {isExpanded ? "Hide Info" : "More Info"}
+                    </motion.button>
+                    <motion.div variants={fadeUp}>
+                      <Link
+                        to="/contact"
+                        className="group inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold tracking-wide text-white transition-all duration-300 hover:border-white/40 hover:bg-white/20"
+                      >
+                        Apply via Contact
+                        <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                      </Link>
                     </motion.div>
                   </div>
 
-                  <motion.div variants={fadeUp}>
-                    <Link
-                      to="/contact"
-                      className="group inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold tracking-wide text-white transition-all duration-300 hover:border-white/40 hover:bg-white/20"
-                    >
-                      Apply via Contact
-                      <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                    </Link>
-                  </motion.div>
+                  <AnimatePresence initial={false}>
+                    {isExpanded && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0, y: -12 }}
+                        animate={{ opacity: 1, height: "auto", y: 0 }}
+                        exit={{ opacity: 0, height: 0, y: -12 }}
+                        transition={{ duration: 0.45, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="mt-6 grid gap-8 md:grid-cols-2">
+                          <div className="space-y-4">
+                            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-200/90">
+                              Key Responsibilities
+                            </h3>
+                            <ul className="space-y-3 text-sm text-neutral-100/90">
+                              {position.responsibilities.map((item) => (
+                                <li key={item} className="flex items-start gap-3">
+                                  <span className="mt-1 flex h-2.5 w-2.5 flex-shrink-0 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.8)]" />
+                                  <span className="leading-relaxed">{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <div className="space-y-4">
+                            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-fuchsia-200/90">
+                              Requirements
+                            </h3>
+                            <ul className="space-y-3 text-sm text-neutral-100/90">
+                              {position.requirements.map((item) => (
+                                <li key={item} className="flex items-start gap-3">
+                                  <span className="mt-1 flex h-2.5 w-2.5 flex-shrink-0 rounded-full bg-fuchsia-300 shadow-[0_0_12px_rgba(244,114,182,0.8)]" />
+                                  <span className="leading-relaxed">{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </GlassCard>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </motion.div>
       </section>
 

@@ -85,13 +85,21 @@ const Home = () => {
           <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             AI With Purpose. Technology With Impact.
           </h2>
-          <p className="text-sm leading-relaxed text-neutral-200/85 sm:text-base">
+          <p className="text-sm leading-relaxed text-neutral-200/85 sm:text-base text-center sm:text-justify lg:text-right">
             Cosintr is more than a technology company — we are an innovation partner. Our mission is to create measurable impact through intelligent automation, enabling businesses to focus on creativity, growth, and strategic excellence.
           </p>
         </div>
       </section>
 
       <GeminiSection />
+
+  <section className="relative bg-black py-14 -translate-y-40 md:-translate-y-56 lg:-translate-y-72">
+        <div className="container mx-auto flex items-center justify-center px-4 text-center">
+          <span className="text-2xl font-semibold tracking-[0.4em] text-neutral-200/85 sm:text-3xl">
+            Innovate. Collaborate. Accelerate.
+          </span>
+        </div>
+      </section>
 
       <section className="relative isolate overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
         <div className="pointer-events-none absolute inset-0">

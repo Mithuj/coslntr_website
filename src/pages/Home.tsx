@@ -1,4 +1,5 @@
 import { Zap, Brain, Lightbulb } from "lucide-react";
+import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Hero } from "@/components/Hero";
@@ -93,11 +94,17 @@ const Home = () => {
 
       <GeminiSection />
 
-  <section className="relative bg-black py-14 -translate-y-40 md:-translate-y-56 lg:-translate-y-72">
+      <section className="relative bg-black py-14 -translate-y-40 md:-translate-y-56 lg:-translate-y-72">
         <div className="container mx-auto flex items-center justify-center px-4 text-center">
-          <span className="text-2xl font-semibold tracking-[0.4em] text-neutral-200/85 sm:text-3xl">
-            Innovate. Collaborate. Accelerate.
-          </span>
+          <motion.span
+            className="text-2xl font-semibold tracking-[0.4em] text-neutral-200/85 sm:text-3xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ amount: 0.7, once: false }}
+          >
+            nnovate. Collaborate. Accelerate.
+          </motion.span>
         </div>
       </section>
 

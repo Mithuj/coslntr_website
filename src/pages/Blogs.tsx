@@ -24,7 +24,8 @@ const Blogs = () => {
           className="container relative z-10 mx-auto text-center"
           variants={fadeUp}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
         >
           <motion.div variants={fadeUp}>
             <AnimatedText

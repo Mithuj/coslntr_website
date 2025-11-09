@@ -62,7 +62,8 @@ const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
           }}
           variants={textVariants}
           initial="initial"
-          animate="animate"
+          whileInView="animate"
+          viewport={{ once: false, amount: 0.6 }}
           onHoverStart={() => hoverEffect && setIsHovered(true)}
           onHoverEnd={() => hoverEffect && setIsHovered(false)}
         >

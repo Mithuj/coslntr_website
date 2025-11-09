@@ -83,7 +83,8 @@ const Careers = () => {
           className="container relative z-10 mx-auto text-center"
           variants={fadeUp}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
         >
           <motion.div variants={fadeUp}>
             <AnimatedText text="Careers" className="py-0" textClassName="!text-5xl md:!text-7xl" />

@@ -66,7 +66,7 @@ const Home = () => {
       <BackgroundPaths title="Discover Excellence" />
 
       <section className="relative -mt-6 px-4 pt-10 pb-16 sm:px-6 lg:px-8">
-  <div className="container ml-0 mr-auto max-w-4xl space-y-6 text-left lg:pl-0">
+  <div className="container ml-0 mr-auto max-w-4xl space-y-6 text-left pl-32 sm:pl-44 lg:pl-56">
           <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             Empowering Intelligence. Redefining Innovation.
           </h2>

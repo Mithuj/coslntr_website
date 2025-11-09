@@ -73,6 +73,9 @@ const Home = () => {
           <p className="text-sm leading-relaxed text-neutral-200/85 sm:text-base">
             Cosintr is a next-generation AI research and development company dedicated to transforming ideas into intelligent, scalable solutions. We leverage artificial intelligence, automation, and data science to accelerate digital transformation across industries.
           </p>
+          <p className="text-sm leading-relaxed text-neutral-200/80 sm:text-base">
+            To create a world where artificial intelligence amplifies human potential - driving innovation, efficiency, and trust in every decision. At Cosintr, we believe in ethical, transparent, and responsible AI that improves organizations and society as a whole.
+          </p>
         </div>
       </section>
 

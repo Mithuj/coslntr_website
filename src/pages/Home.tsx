@@ -65,6 +65,17 @@ const Home = () => {
 
       <BackgroundPaths title="Discover Excellence" />
 
+      <section className="relative py-16 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-4xl text-center space-y-6">
+          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+            Empowering Intelligence. Redefining Innovation.
+          </h2>
+          <p className="text-sm leading-relaxed text-neutral-200/85 sm:text-base">
+            Cosintr is a next-generation AI research and development company dedicated to transforming ideas into intelligent, scalable solutions. We leverage artificial intelligence, automation, and data science to accelerate digital transformation across industries.
+          </p>
+        </div>
+      </section>
+
       <GeminiSection />
 
       <section className="relative isolate overflow-hidden py-20 px-4 sm:px-6 lg:px-8">

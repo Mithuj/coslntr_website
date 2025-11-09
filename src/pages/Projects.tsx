@@ -45,7 +45,7 @@ const Projects = () => {
             name: "Biomedical Imaging for Edge",
             href: "/projects/biomedical-imaging",
             highlight: true,
-            animation: "glow",
+            animation: "pulse",
             description:
               "Recent advances in deep learning have greatly improved segmentation accuracy in medical imaging tasks such as tissue classification, lesion detection, and boundary extraction. However, these methods are still computationally intensive, especially for resource-limited or portable diagnostic systems. Medical datasets are volumetric and typically represented as dense 3D voxel grids, requiring full-volume processing to maintain spatial continuity. This structure introduces redundancy, as large homogeneous regions without diagnostic value still consume memory and computation. As a result, voxel-based representations increase memory usage, data transfer, and FLOPs, limiting real-time performance and energy efficiency on embedded or edge devices—challenges that are critical in low-resource healthcare settings.",
           },

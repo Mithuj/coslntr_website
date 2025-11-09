@@ -67,29 +67,83 @@ const Home = () => {
       <BackgroundPaths title="Discover Excellence" />
 
       <section className="relative -mt-6 px-4 pt-10 pb-16 sm:px-6 lg:px-8">
-  <div className="container ml-0 mr-auto max-w-4xl space-y-6 text-left pl-32 sm:pl-44 lg:pl-56">
-          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+        <span className="pointer-events-none absolute left-6 top-6 h-32 w-32 rounded-full bg-cyan-400/15 blur-3xl" />
+        <span className="pointer-events-none absolute right-[30%] top-1/2 h-40 w-40 -translate-y-1/2 rounded-full bg-fuchsia-500/10 blur-3xl" />
+        <motion.div
+          className="container ml-0 mr-auto max-w-4xl space-y-6 text-left pl-32 sm:pl-44 lg:pl-56"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.5 }}
+        >
+          <motion.h2
+            className="text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.6 }}
+          >
             Empowering Intelligence. Redefining Innovation.
-          </h2>
-          <p className="text-sm leading-relaxed text-neutral-200/85 sm:text-base">
+          </motion.h2>
+          <motion.p
+            className="text-sm leading-relaxed text-neutral-200/85 sm:text-base"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.06, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.6 }}
+          >
             Cosintr is a next-generation AI research and development company dedicated to transforming ideas into intelligent, scalable solutions. We leverage artificial intelligence, automation, and data science to accelerate digital transformation across industries.
-          </p>
-          <p className="text-sm leading-relaxed text-neutral-200/80 sm:text-base">
+          </motion.p>
+          <motion.p
+            className="text-sm leading-relaxed text-neutral-200/80 sm:text-base"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.12, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.6 }}
+          >
             To create a world where artificial intelligence amplifies human potential - driving innovation, efficiency, and trust in every decision. At Cosintr, we believe in ethical, transparent, and responsible AI that improves organizations and society as a whole.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </section>
 
       <section className="relative -mt-10 px-4 pb-16 sm:px-6 lg:px-8">
-        <div className="container ml-auto mr-0 max-w-4xl space-y-6 text-right pr-32 sm:pr-44 lg:pr-56">
-          <h3 className="text-sm uppercase tracking-[0.3em] text-neutral-300/80">Our Commitment</h3>
-          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+        <span className="pointer-events-none absolute right-6 top-8 h-32 w-32 rounded-full bg-blue-400/15 blur-3xl" />
+        <span className="pointer-events-none absolute left-[28%] bottom-0 h-36 w-36 rounded-full bg-purple-500/10 blur-3xl" />
+        <motion.div
+          className="container ml-auto mr-0 max-w-4xl space-y-6 text-right pr-32 sm:pr-44 lg:pr-56"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.85, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.5 }}
+        >
+          <motion.h3
+            className="text-sm uppercase tracking-[0.3em] text-neutral-300/80"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.55 }}
+          >
+            Our Commitment
+          </motion.h3>
+          <motion.h2
+            className="text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.08, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.55 }}
+          >
             AI With Purpose. Technology With Impact.
-          </h2>
-          <p className="text-sm leading-relaxed text-neutral-200/85 sm:text-base text-center sm:text-justify lg:text-right">
+          </motion.h2>
+          <motion.p
+            className="text-sm leading-relaxed text-neutral-200/85 sm:text-base text-center sm:text-justify lg:text-right"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.16, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.55 }}
+          >
             Cosintr is more than a technology company — we are an innovation partner. Our mission is to create measurable impact through intelligent automation, enabling businesses to focus on creativity, growth, and strategic excellence.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </section>
 
       <GeminiSection />

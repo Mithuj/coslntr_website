@@ -209,6 +209,7 @@ const Projects = () => {
                       text={category.name}
                       onButtonClick={() => toggleCategory(category.name)}
                       buttonLabel={isActive ? "Hide Projects" : "View Projects"}
+                      showPatternText={false}
                       className="h-full"
                     />
                   </motion.div>,
@@ -249,6 +250,7 @@ const Projects = () => {
                               className="h-full"
                               highlightText={hasHighlight}
                               animatedText={project.animation ?? false}
+                              showPatternText={false}
                               {...actionProps}
                             />
                           </motion.div>

@@ -141,7 +141,7 @@ const Home = () => {
             transition={{ duration: 0.75, delay: 0.16, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.55 }}
           >
-            Cosintr is more than a technology company — we are an innovation partner. Our mission is to create measurable impact through intelligent automation, enabling businesses to focus on creativity, growth, and strategic excellence.
+            Transforming constraints into capabilities with embedded intelligenc
           </motion.p>
         </motion.div>
       </section>
@@ -157,7 +157,7 @@ const Home = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ amount: 0.7, once: false }}
           >
-            nnovate. Collaborate. Accelerate.
+            Innovate. Collaborate. Accelerate.
           </motion.span>
         </div>
       </section>

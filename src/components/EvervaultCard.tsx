@@ -18,6 +18,7 @@ interface EvervaultCardProps {
   allowOverflow?: boolean;
   highlightText?: boolean;
   animatedText?: boolean | AnimatedTextVariant;
+  showPatternText?: boolean;
 }
 
 export const EvervaultCard: React.FC<EvervaultCardProps> = ({
@@ -32,20 +33,25 @@ export const EvervaultCard: React.FC<EvervaultCardProps> = ({
   allowOverflow = false,
   highlightText = false,
   animatedText = false,
+  showPatternText = true,
 }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const [randomString, setRandomString] = useState("");
 
   useEffect(() => {
-    setRandomString(generateRandomString(1500));
-  }, []);
+    if (showPatternText) {
+      setRandomString(generateRandomString(1500));
+    }
+  }, [showPatternText]);
 
   const handleMouseMove = ({ currentTarget, clientX, clientY }: React.MouseEvent<HTMLDivElement>) => {
     const { left, top } = currentTarget.getBoundingClientRect();
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
-    setRandomString(generateRandomString(1500));
+    if (showPatternText) {
+      setRandomString(generateRandomString(1500));
+    }
   };
 
   const shouldAllowOverflow = allowOverflow || Boolean(description);
@@ -85,7 +91,13 @@ export const EvervaultCard: React.FC<EvervaultCardProps> = ({
           shouldAllowOverflow ? "overflow-visible" : "overflow-hidden",
         )}
       >
-        <CardPattern mouseX={mouseX} mouseY={mouseY} randomString={randomString} gradientClassName={gradientClassName} />
+        <CardPattern
+          mouseX={mouseX}
+          mouseY={mouseY}
+          randomString={randomString}
+          gradientClassName={gradientClassName}
+          showPatternText={showPatternText}
+        />
         <div className="relative z-10 flex h-full w-full flex-col items-center justify-center">
           <div className="relative flex h-44 w-44 items-center justify-center rounded-full text-4xl font-bold text-white">
             {shouldHighlight && (
@@ -164,9 +176,16 @@ interface CardPatternProps {
   mouseY: ReturnType<typeof useMotionValue>;
   randomString: string;
   gradientClassName?: string;
+  showPatternText?: boolean;
 }
 
-export const CardPattern: React.FC<CardPatternProps> = ({ mouseX, mouseY, randomString, gradientClassName }) => {
+export const CardPattern: React.FC<CardPatternProps> = ({
+  mouseX,
+  mouseY,
+  randomString,
+  gradientClassName,
+  showPatternText = true,
+}) => {
   const maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`;
   const style = { maskImage, WebkitMaskImage: maskImage };
 
@@ -180,11 +199,16 @@ export const CardPattern: React.FC<CardPatternProps> = ({ mouseX, mouseY, random
         )}
         style={style}
       />
-      <motion.div className="absolute inset-0 rounded-2xl opacity-0 mix-blend-overlay transition duration-500 group-hover/card:opacity-100" style={style}>
-        <p className="absolute inset-x-0 h-full whitespace-pre-wrap break-words font-mono text-xs font-bold text-white">
-          {randomString}
-        </p>
-      </motion.div>
+      {showPatternText && (
+        <motion.div
+          className="absolute inset-0 rounded-2xl opacity-0 mix-blend-overlay transition duration-500 group-hover/card:opacity-100"
+          style={style}
+        >
+          <p className="absolute inset-x-0 h-full whitespace-pre-wrap break-words font-mono text-xs font-bold text-white">
+            {randomString}
+          </p>
+        </motion.div>
+      )}
     </div>
   );
 };

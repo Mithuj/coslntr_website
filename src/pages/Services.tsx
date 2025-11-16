@@ -1,4 +1,4 @@
-import { Zap, Brain, ShoppingCart, HeartPulse, Cog, Lightbulb } from "lucide-react";
+import { Zap, Brain, Cog, Lightbulb } from "lucide-react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -44,30 +44,6 @@ const Services = () => {
         "Automated Experiment Tracking",
         "Research Workflow Integration",
         "Insight Generation Tools",
-      ],
-    },
-    {
-      icon: ShoppingCart,
-      title: "E-Commerce Solutions",
-      description:
-        "Enhance your online business with modern, scalable e-commerce platforms built for seamless user experiences and maximum conversion.",
-      features: [
-        "Custom Online Store Development",
-        "Secure Payment Integration",
-        "Inventory & Order Automation",
-        "Customer Analytics & Personalization",
-      ],
-    },
-    {
-      icon: HeartPulse,
-      title: "Medical Applications",
-      description:
-        "Innovate healthcare with AI-driven medical software designed to improve diagnosis, patient management, and clinical efficiency.",
-      features: [
-        "AI-Assisted Diagnosis Systems",
-        "Patient Data Management",
-        "Remote Health Monitoring",
-        "Medical Imaging Analysis",
       ],
     },
     {
@@ -203,7 +179,7 @@ const Services = () => {
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.div
-            className="grid gap-16 sm:grid-cols-2 xl:grid-cols-3"
+            className="grid gap-16 sm:grid-cols-2 xl:grid-cols-4"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}

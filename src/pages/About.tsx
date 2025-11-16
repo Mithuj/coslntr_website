@@ -219,13 +219,7 @@ const About = () => {
               <motion.div variants={fadeLeft} className="max-w-3xl">
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Who We Are</h2>
                 <p className="text-muted-foreground mb-4">
-                  COSINTR is a premier IT company based in Colombo 6, Srilanka, specializing in artificial intelligence, automation, and innovative software development. With a team of 15 dedicated professionals, we transform businesses through intelligent technology solutions.
-                </p>
-                <p className="text-muted-foreground mb-4">
-                  Our expertise spans across AI-based research and development, e-commerce platforms, medical applications, and custom software solutions. We pride ourselves on delivering high-quality products that solve real-world problems.
-                </p>
-                <p className="text-muted-foreground">
-                  From our flagship product Mednyxa to enterprise automation systems, we are committed to innovation, excellence, and making a meaningful impact in the technology landscape.
+                  An emerging IT services and AI research startup dedicated to addressing humanitarian and societal challenges through technology. We combine cutting-edge artificial intelligence, data-driven research, and practical IT solutions to develop impactful applications across domains such as healthcare, commerce, disaster management, and education. Rooted in research-driven innovation, our mission is to rebuild intelligence into solutions that improve lives, empower communities, and create a sustainable future.
                 </p>
               </motion.div>
             </div>

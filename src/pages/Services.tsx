@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Zap, Brain, Cog, Lightbulb } from "lucide-react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
@@ -9,8 +10,23 @@ import { useParallax } from "@/hooks/use-parallax";
 import { fadeUp, scaleUp, staggerFade } from "@/lib/motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import logo from "@/assets/coslntr-logo.png";
 
 const Services = () => {
+  useEffect(() => {
+    const favicon = document.querySelector<HTMLLinkElement>("link[rel='icon']");
+    if (!favicon) {
+      return;
+    }
+    const previousHref = favicon.getAttribute("href");
+    favicon.href = logo;
+    return () => {
+      if (previousHref) {
+        favicon.href = previousHref;
+      }
+    };
+  }, []);
+
   const services = [
     {
       icon: Zap,
@@ -220,8 +236,14 @@ const Services = () => {
                       ))}
                     </ul>
                     {"ctaHref" in service && service.ctaHref && (
-                      <Button asChild size="sm" variant="secondary" className="mt-4">
-                        <Link to={service.ctaHref}>
+                      <Button
+                        asChild
+                        className="relative mt-6 w-fit font-geist tracking-tight text-center text-sm text-black transition-shadow duration-300 sm:text-base"
+                      >
+                        <Link
+                          to={service.ctaHref}
+                          className="rounded-full bg-white px-7 py-3 shadow-lg hover:bg-white/90"
+                        >
                           {"ctaLabel" in service && service.ctaLabel ? service.ctaLabel : "View More"}
                         </Link>
                       </Button>

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { CloudCog, Layers, LifeBuoy, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
@@ -6,8 +7,23 @@ import { AnimatedText } from "@/components/ui/animated-text";
 import { PinContainer } from "@/components/ui/pin-container";
 import { useParallax } from "@/hooks/use-parallax";
 import { fadeUp, staggerFade } from "@/lib/motion";
+import logo from "@/assets/coslntr-logo.png";
 
 const MoreServices = () => {
+  useEffect(() => {
+    const favicon = document.querySelector<HTMLLinkElement>("link[rel='icon']");
+    if (!favicon) {
+      return;
+    }
+    const previousHref = favicon.getAttribute("href");
+    favicon.href = logo;
+    return () => {
+      if (previousHref) {
+        favicon.href = previousHref;
+      }
+    };
+  }, []);
+
   const expandedServices = [
     {
       icon: ShieldCheck,

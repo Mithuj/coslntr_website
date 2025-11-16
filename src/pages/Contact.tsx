@@ -29,13 +29,13 @@ const Contact = () => {
       "",
       formData.message,
     ];
-  const mailtoHref = `mailto:hello@cosintr.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+  const mailtoHref = `mailto:info@cosintr.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
 
     window.location.href = mailtoHref;
 
     toast({
       title: "Opening your email client…",
-      description: "Review the draft message to send it to hello@cosintr.com.",
+      description: "Review the draft message to send it to info@cosintr.com",
     });
 
     setFormData({ name: "", email: "", subject: "", message: "" });
@@ -146,8 +146,8 @@ const Contact = () => {
                   icon: Mail,
                   title: "Email Us",
                   copy: "Send us an email and we'll respond within 24 hours",
-                  link: "mailto:hello@cosintr.com",
-                  label: "hello@cosintr.com",
+                  link: "mailto:info@cosintr.com",
+                  label: "info@cosintr.com",
                 },
                 {
                   icon: Phone,

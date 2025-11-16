@@ -7,6 +7,8 @@ import { PinContainer } from "@/components/ui/pin-container";
 import { AnimatedText } from "@/components/ui/animated-text";
 import { useParallax } from "@/hooks/use-parallax";
 import { fadeUp, scaleUp, staggerFade } from "@/lib/motion";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const services = [
@@ -57,6 +59,8 @@ const Services = () => {
         "Cloud-Based Solutions",
         "UI/UX Design & Prototyping",
       ],
+      ctaLabel: "View More",
+      ctaHref: "/more-services",
     },
   ];
 
@@ -215,6 +219,13 @@ const Services = () => {
                         </li>
                       ))}
                     </ul>
+                    {"ctaHref" in service && service.ctaHref && (
+                      <Button asChild size="sm" variant="secondary" className="mt-4">
+                        <Link to={service.ctaHref}>
+                          {"ctaLabel" in service && service.ctaLabel ? service.ctaLabel : "View More"}
+                        </Link>
+                      </Button>
+                    )}
                   </div>
                 </PinContainer>
               </motion.div>

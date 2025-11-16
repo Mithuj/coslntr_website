@@ -11,50 +11,50 @@ const MoreServices = () => {
   const expandedServices = [
     {
       icon: ShieldCheck,
-      title: "AI Model Auditing",
+      title: "AI-Based Medical Solutions",
       description:
-        "Comprehensive assessments that validate fairness, transparency, and robustness across your AI models before they scale.",
+        "Reinvent healthcare with intelligent AI technologies that analyze, predict, and support medical decision-making. We build advanced systems that improve diagnosis accuracy, streamline hospital operations, and enhance patient outcomes.",
       features: [
-        "Bias & drift detection",
-        "Explainability reporting",
-        "Regulatory compliance mapping",
-        "Continuous monitoring playbooks",
-      ],
-    },
-    {
-      icon: Layers,
-      title: "Legacy Modernization",
-      description:
-        "Upgrade mission-critical systems with modular architectures that unlock agility without disrupting daily operations.",
-      features: [
-        "Architecture discovery",
-        "Migration roadmaps",
-        "API-first refactoring",
-        "Performance benchmarking",
+        "Clinical Decision Support",
+        "Automated Medical Reporting",
+        "AI-Powered Diagnosis Assistance",
+        "Patient Monitoring & Alerts",
       ],
     },
     {
       icon: CloudCog,
-      title: "Cloud Transformation",
+      title: "Edge AI with IoT Solutions",
       description:
-        "Design and operate resilient cloud ecosystems tailored for high-availability workloads and rapid experimentation.",
+        "Empower your devices with real-time intelligence through Edge AI and IoT. Our solutions bring powerful analytics to the edge, enabling faster decisions, reduced latency, and seamless connectivity across smart environments.",
       features: [
-        "Landing zone design",
-        "Multi-cloud governance",
-        "FinOps optimization",
-        "Observability tooling",
+        "Real-Time Edge Analytics",
+        "Smart Sensor Integration",
+        "IoT Device Automation",
+        "Low-Latency Decision Systems",
+      ],
+    },
+    {
+      icon: Layers,
+      title: "AR & VR Solutions",
+      description:
+        "Transform digital experiences with immersive AR and VR technologies that merge the physical and virtual worlds. We design interactive systems that enhance training, visualization, and customer engagement.",
+      features: [
+        "Immersive Training Simulations",
+        "AR-Based Product Visualization",
+        "Virtual Collaboration Spaces",
+        "3D Interactive Experiences",
       ],
     },
     {
       icon: LifeBuoy,
-      title: "Support & Reliability",
+      title: "E-Commerce AI Solutions",
       description:
-        "Proactive maintenance programs that keep your products stable, secure, and ready for the next feature iteration.",
+        "Boost your e-commerce performance with intelligent AI tools that personalize shopping, optimize conversions, and streamline operations. We create systems that enhance customer experience and drive business growth.",
       features: [
-        "24/7 incident response",
-        "Release automation",
-        "Security hardening",
-        "Runbook development",
+        "Personalized Product Recommendations",
+        "AI-Driven Sales Optimization",
+        "Smart Inventory Management",
+        "Automated Customer Support",
       ],
     },
   ];

@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
 
 interface DotCardProps {
   target?: number;
@@ -18,29 +19,57 @@ const DotCard = ({
   label = "Projects",
 }: DotCardProps) => {
   const [count, setCount] = useState(0);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const intervalRef = useRef<number | null>(null);
+  const isInView = useInView(containerRef, { once: false, amount: 0.6 });
+
+  const clearAnimation = useCallback(() => {
+    if (intervalRef.current !== null) {
+      window.clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, []);
+
+  const startAnimation = useCallback(() => {
+    clearAnimation();
+    const end = target;
+    if (end <= 0) {
+      setCount(end);
+      return;
+    }
+
+    let current = 0;
+    setCount(0);
+    const totalSteps = Math.max(Math.floor(duration / 50), 1);
+    const increment = Math.max(Math.ceil(end / totalSteps), 1);
+
+    intervalRef.current = window.setInterval(() => {
+      current += increment;
+      if (current >= end) {
+        current = end;
+        clearAnimation();
+      }
+      setCount(current);
+    }, 50);
+  }, [clearAnimation, duration, target]);
 
   useEffect(() => {
-    let start = 0;
-    const end = target;
-    const range = end - start;
-    if (range <= 0) return;
-    const increment = Math.ceil(end / (duration / 50));
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= end) {
-        start = end;
-        clearInterval(timer);
-      }
-      setCount(start);
-    }, 50);
-    return () => clearInterval(timer);
-  }, [target, duration]);
+    if (isInView) {
+      startAnimation();
+    } else {
+      clearAnimation();
+    }
+
+    return clearAnimation;
+  }, [isInView, startAnimation, clearAnimation]);
+
+  useEffect(() => clearAnimation, [clearAnimation]);
 
   const displayNumber = count < 1000 ? `${count}` : `${Math.floor(count / 1000)}k`;
   const display = `${displayNumber}${suffix}`;
 
   return (
-    <div className={`outer ${className ?? ""}`}>
+    <div ref={containerRef} className={`outer ${className ?? ""}`}>
       <div className="dot" />
       <div className="card">
         <div className="ray" />

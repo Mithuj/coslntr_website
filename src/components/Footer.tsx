@@ -1,12 +1,24 @@
+import { useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { FooterBackgroundGradient, TextHoverEffect } from "@/components/ui/hover-footer";
 
 const Footer = () => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(containerRef, { once: false, amount: 0.45 });
+  const [animationKey, setAnimationKey] = useState(0);
+
+  useEffect(() => {
+    if (isInView) {
+      setAnimationKey((previous) => previous + 1);
+    }
+  }, [isInView]);
+
   return (
-    <footer className="relative overflow-hidden border-t border-border bg-background">
+    <footer ref={containerRef} className="relative overflow-hidden border-t border-border bg-background">
       <FooterBackgroundGradient />
       <div className="relative z-10 flex flex-col items-center gap-8 px-6 py-20 text-center">
-        <TextHoverEffect text="COSINTR" className="h-36 w-full max-w-4xl" />
+        <TextHoverEffect key={animationKey} text="COSINTR" className="h-36 w-full max-w-4xl" />
         <p className="max-w-2xl text-sm text-muted-foreground">
           From World Laws to Working Intelligence
         </p>

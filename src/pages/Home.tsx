@@ -177,26 +177,77 @@ const Home = () => {
           </div>
 
           <div className="grid gap-8 md:grid-cols-3">
-            {featuredServices.map((service) => (
-              <GlassCard key={service.title} className="relative h-full overflow-hidden border border-white/10 bg-white/5 p-8 text-white shadow-[0_30px_70px_rgba(12,20,46,0.4)]">
-                <span className="pointer-events-none absolute -top-24 right-0 h-40 w-40 rounded-full bg-white/15 blur-3xl" />
-                <span className="pointer-events-none absolute -bottom-24 left-0 h-40 w-40 rounded-full bg-cyan-300/20 blur-3xl" />
-                <div className="relative flex h-full flex-col gap-6">
-                  <div className="flex items-center gap-3">
-                    <service.icon className="h-10 w-10 text-cyan-300" />
-                    <h3 className="text-xl font-semibold leading-tight">{service.title}</h3>
+            {featuredServices.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 40, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                whileHover={{ y: -12, scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                transition={{ duration: 0.65, delay: index * 0.12, ease: "easeOut" }}
+                viewport={{ once: false, amount: 0.35 }}
+                className="relative h-full"
+              >
+                <GlassCard className="group relative h-full overflow-hidden border border-white/10 bg-white/5 p-8 text-white shadow-[0_30px_70px_rgba(12,20,46,0.4)] transition-all duration-500">
+                  <span className="pointer-events-none absolute -top-24 right-0 h-40 w-40 rounded-full bg-white/15 blur-3xl transition-opacity duration-500 group-hover:opacity-80" />
+                  <span className="pointer-events-none absolute -bottom-24 left-0 h-40 w-40 rounded-full bg-cyan-300/20 blur-3xl transition-opacity duration-500 group-hover:opacity-90" />
+                  <div className="relative flex h-full flex-col gap-6">
+                    <div className="flex items-center gap-3">
+                      <motion.span
+                        className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-cyan-200 shadow-[0_20px_40px_rgba(45,212,191,0.35)]"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, delay: index * 0.12 + 0.15, ease: "easeOut" }}
+                      >
+                        <service.icon className="h-6 w-6" />
+                      </motion.span>
+                      <motion.h3
+                        className="text-xl font-semibold leading-tight"
+                        initial={{ opacity: 0, y: 16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.55, delay: index * 0.12 + 0.18, ease: "easeOut" }}
+                      >
+                        {service.title}
+                      </motion.h3>
+                    </div>
+                    <motion.p
+                      className="text-sm leading-relaxed text-neutral-200/90"
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.12 + 0.24, ease: "easeOut" }}
+                    >
+                      {service.description}
+                    </motion.p>
+                    <motion.ul
+                      className="space-y-3 text-xs text-neutral-200/85"
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: false, amount: 0.25 }}
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                          opacity: 1,
+                          transition: {
+                            staggerChildren: 0.08,
+                            delayChildren: index * 0.12 + 0.3,
+                          },
+                        },
+                      }}
+                    >
+                      {service.features.map((feature) => (
+                        <motion.li
+                          key={feature}
+                          className="flex items-start gap-2"
+                          variants={{ hidden: { opacity: 0, x: -18 }, visible: { opacity: 1, x: 0 } }}
+                        >
+                          <span className="mt-1 flex h-2 w-2 flex-shrink-0 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(103,232,249,0.7)]" />
+                          <span className="leading-relaxed">{feature}</span>
+                        </motion.li>
+                      ))}
+                    </motion.ul>
                   </div>
-                  <p className="text-sm text-neutral-200/90 leading-relaxed">{service.description}</p>
-                  <ul className="space-y-3 text-xs text-neutral-200/85">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2">
-                        <span className="mt-1 flex h-2 w-2 flex-shrink-0 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(103,232,249,0.7)]" />
-                        <span className="leading-relaxed">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </GlassCard>
+                </GlassCard>
+              </motion.div>
             ))}
           </div>
 

@@ -163,10 +163,6 @@ const Home = () => {
       </section>
 
       <section className="relative isolate overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
-        <div className="pointer-events-none absolute inset-0">
-          <span className="absolute -top-20 right-1/4 h-64 w-64 rounded-full bg-cyan-500/20 blur-3xl" />
-          <span className="absolute -bottom-16 left-1/5 h-72 w-72 rounded-full bg-fuchsia-500/15 blur-3xl" />
-        </div>
         <div className="container relative z-10 mx-auto max-w-6xl space-y-12">
           <div className="text-center space-y-4">
             <p className="text-sm uppercase tracking-[0.35em] text-muted-foreground">What We Deliver</p>

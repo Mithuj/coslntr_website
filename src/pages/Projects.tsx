@@ -35,7 +35,14 @@ const Projects = () => {
             highlight: true,
             animation: "pulse",
           },
-          { name: "OptiLens", href: "/projects/optilens", highlight: true, animation: "float" },
+          {
+            name: "OptiLens",
+            href: "/projects/optilens",
+            description:
+              "Optilens is an automated product optimization tool for e-commerce sellers that identifies low-performing ASINs and analyzes top competitors to understand what drives high-ranking listings. It reviews titles, descriptions, images, and keywords from the top 20 products, then delivers clear, actionable recommendations to improve visibility, clicks, and conversions. With weekly or biweekly optimization cycles, Optilens keeps your listings updated and competitive in the fast-changing marketplace.",
+            highlight: true,
+            animation: "float",
+          },
         ],
       },
       {

@@ -12,39 +12,44 @@ import logo from "@/assets/coslntr-logo.png";
 
 const featuredServices = [
   {
+    badge: "Technology",
     icon: Zap,
     title: "AI-Based Automation Solutions",
     description:
-      "Revolutionize your business with intelligent AI automation that learns, adapts, and enhances productivity. We create smart systems that handle complex processes with precision and speed.",
+      "We specialize in automating organizational and e-commerce workflows using advanced AI technology. Our solutions streamline repetitive tasks, optimize processes, and enable intelligent decision-making in real time. From automating customer support workflows and sales pipelines to order processing, we help businesses boost productivity and reduce operational costs while maintaining high accuracy and scalability. Our AI agents dynamically route tasks, detect issues, and escalate urgent cases, ensuring smooth and efficient operations for your enterprise.",
     features: [
-      "Predictive Process Automation",
-      "Intelligent Workflow Management",
-      "Smart Data Processing",
-      "Adaptive Decision Systems",
+      "Automation of organizational workflows",
+      "E-commerce workflow automation",
+      "AI-powered customer support and chatbots",
+      "Intelligent task routing and escalation",
+      "Process optimization and real-time decision making",
     ],
   },
   {
+    badge: "Technology",
     icon: Brain,
-    title: "Deep AI Research Solutions",
+    title: "AI Research Solutions",
     description:
-      "Accelerate innovation through our advanced AI research services. We explore cutting-edge models and algorithms to solve real-world challenges and power next-generation applications.",
+      "Our dedicated AI research division drives innovation across multiple domains including medical, agriculture, business, social sciences, and more. We engage in deep research projects focused on state-of-the-art AI technologies to develop intelligent models and tools that revolutionize diverse fields. From healthcare diagnostics and precision farming to business intelligence and social behavior analysis, our research empowers industries with smarter, AI-driven insights and solutions that improve efficiency, accuracy, and decision-making. By pushing the boundaries of AI research in varied sectors, we aim to accelerate scientific discovery and foster transformative impacts across society.",
     features: [
-      "Machine Learning Model Development",
-      "Deep Neural Network Optimization",
-      "Computer Vision & NLP Research",
-      "AI Model Evaluation & Deployment",
+      "AI research in healthcare and medical diagnostics",
+      "Precision agriculture with AI-powered crop monitoring and yield prediction",
+      "Business intelligence and predictive analytics for strategic decision-making",
+      "AI for social sciences including sentiment analysis and behavior modeling",
+      "Exploration of emerging AI technologies across multidisciplinary applications",
     ],
   },
   {
+    badge: "Technology",
     icon: Lightbulb,
     title: "AI-Based R&D Software Solutions",
     description:
-      "Empower your R&D teams with intelligent AI tools that streamline experimentation, automate analysis, and drive data-driven discovery.",
+      "We offer custom AI-enabled software development tailored to your unique requirements. Whether integrating machine learning models, natural language processing, or intelligent automation features, our R&D team crafts solutions that enhance software functionality and user experience. Our AI-powered software solutions help customers harness artificial intelligence to solve complex challenges and gain a competitive edge.",
     features: [
-      "AI-Powered Data Analysis",
-      "Automated Experiment Tracking",
-      "Research Workflow Integration",
-      "Insight Generation Tools",
+      "Custom AI-enabled software development",
+      "Integration of machine learning and NLP",
+      "Intelligent automation features",
+      "Personalized AI solutions for customer needs",
     ],
   },
 ];
@@ -189,6 +194,16 @@ const Home = () => {
                   <span className="pointer-events-none absolute -top-24 right-0 h-40 w-40 rounded-full bg-white/15 blur-3xl transition-opacity duration-500 group-hover:opacity-80" />
                   <span className="pointer-events-none absolute -bottom-24 left-0 h-40 w-40 rounded-full bg-cyan-300/20 blur-3xl transition-opacity duration-500 group-hover:opacity-90" />
                   <div className="relative flex h-full flex-col gap-6">
+                    {service.badge && (
+                      <motion.span
+                        className="w-fit rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs uppercase tracking-[0.35em] text-white/80"
+                        initial={{ opacity: 0, y: -10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: index * 0.1, ease: "easeOut" }}
+                      >
+                        {service.badge}
+                      </motion.span>
+                    )}
                     <div className="flex items-center gap-3">
                       <motion.span
                         className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-cyan-200 shadow-[0_20px_40px_rgba(45,212,191,0.35)]"

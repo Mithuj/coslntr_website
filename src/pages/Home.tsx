@@ -54,7 +54,7 @@ const Home = () => {
       <Navigation />
       <Hero
         eyebrow="POWERED BY COSINTR"
-        title="From World Laws to Working Intelligence"
+        title="From World Laws to Working intelligenceeeee"
         subtitle="Translating first principles into deployable systems."
         ctaLabel="Get Started"
         ctaHref="/services"
@@ -83,7 +83,7 @@ const Home = () => {
             transition={{ duration: 0.7, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.6 }}
           >
-            Empowering Intelligence. Redefining Innovation.
+            Empowering intelligence. Redefining Innovation.
           </motion.h2>
           <motion.p
             className="text-sm leading-relaxed text-neutral-200/85 sm:text-base"
@@ -141,7 +141,7 @@ const Home = () => {
             transition={{ duration: 0.75, delay: 0.16, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.55 }}
           >
-            Transforming constraints into capabilities with embedded intelligenc
+            Transforming constraints into capabilities with embedded intelligence
           </motion.p>
         </motion.div>
       </section>

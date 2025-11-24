@@ -7,6 +7,7 @@ import { BackgroundPaths } from "@/components/BackgroundPaths";
 import { GeminiSection } from "@/components/GeminiSection";
 import DotCard from "@/components/DotCard";
 import GlassCard from "@/components/GlassCard";
+import { Link } from "react-router-dom";
 import logo from "@/assets/coslntr-logo.png";
 
 const featuredServices = [
@@ -248,13 +249,13 @@ const Home = () => {
           </div>
 
           <div className="text-center">
-            <a
-              href="/services"
+            <Link
+              to="/services"
               className="group inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold tracking-wide text-white transition-all duration-300 hover:border-white/35 hover:bg-white/20"
             >
               View All Services
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>

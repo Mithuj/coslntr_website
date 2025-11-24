@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import GlassCard from "@/components/GlassCard";
-import { PinContainer } from "@/components/ui/pin-container";
 import { AnimatedText } from "@/components/ui/animated-text";
 import { useParallax } from "@/hooks/use-parallax";
 import { fadeUp, scaleUp, staggerFade } from "@/lib/motion";
@@ -201,7 +200,7 @@ const Services = () => {
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.div
-            className="grid gap-16 sm:grid-cols-2 xl:grid-cols-4"
+            className="grid gap-16 sm:grid-cols-2 xl:grid-cols-4 [grid-auto-rows:1fr]"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -211,22 +210,17 @@ const Services = () => {
                 key={service.title}
                 variants={staggerFade}
                 custom={index}
-                className="flex items-center justify-center"
+                className="flex h-full items-stretch justify-center"
               >
-                <PinContainer
-                  title={service.title}
-                  href="/contact"
-                  containerClassName="mx-auto flex h-[420px] w-full max-w-xs sm:max-w-sm items-center justify-center"
-                  className="w-[260px] sm:w-[280px]"
-                >
-                  <div className="space-y-4 text-left text-white">
-                    <div className="flex items-center gap-3">
+                <div className="mx-auto flex h-full w-full max-w-xs sm:max-w-sm">
+                  <div className="flex h-full min-h-[620px] w-full flex-col gap-4 rounded-[22px] border border-white/10 bg-white/5 p-6 text-left text-white shadow-[0_22px_55px_rgba(12,20,46,0.45)] backdrop-blur-lg">
+                    <div className="flex items-start gap-3">
                       <service.icon className="h-10 w-10 text-cyan-400" />
                       <span className="text-xl font-semibold leading-tight">
                         {service.title}
                       </span>
                     </div>
-                    <p className="text-sm text-neutral-300">
+                    <p className="text-sm text-neutral-300 leading-relaxed">
                       {service.description}
                     </p>
                     <ul className="space-y-2 text-xs text-neutral-200">
@@ -240,7 +234,7 @@ const Services = () => {
                     {"ctaHref" in service && service.ctaHref && (
                       <Button
                         asChild
-                        className="relative mt-6 w-fit font-geist tracking-tight text-center text-sm text-black transition-shadow duration-300 sm:text-base"
+                        className="relative mt-auto w-fit font-geist tracking-tight text-center text-sm text-black transition-shadow duration-300 sm:text-base"
                       >
                         <Link
                           to={service.ctaHref}
@@ -251,7 +245,7 @@ const Services = () => {
                       </Button>
                     )}
                   </div>
-                </PinContainer>
+                </div>
               </motion.div>
             ))}
           </motion.div>

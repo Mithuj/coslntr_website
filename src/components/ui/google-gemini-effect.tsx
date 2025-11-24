@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { motion, MotionValue, Transition } from "framer-motion";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const transition: Transition = {
   duration: 0,
@@ -32,9 +33,12 @@ export const GoogleGeminiEffect = ({
           `Scroll this component and see the bottom SVG come to life wow this works!`}
       </p>
       <div className="absolute inset-x-0 -top-40 flex h-[540px] w-full items-center justify-center sm:-top-48 sm:h-[620px] md:-top-60 md:h-[720px] lg:h-[840px] xl:h-[900px]">
-        <button className="z-30 mx-auto mt-8 w-fit rounded-full bg-white px-3 py-1 text-xs font-bold text-black shadow-md md:mt-24 md:px-4 md:py-2 md:text-base">
+        <Link
+          to="/about"
+          className="z-30 mx-auto mt-8 w-fit rounded-full bg-white px-3 py-1 text-xs font-bold text-black shadow-md transition-transform duration-300 hover:-translate-y-0.5 md:mt-24 md:px-4 md:py-2 md:text-base"
+        >
           cosintr.com
-        </button>
+        </Link>
       </div>
       <svg
         width="100%"

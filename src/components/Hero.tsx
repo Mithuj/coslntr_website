@@ -3,6 +3,7 @@
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SparklesCore } from "@/components/ui/sparkles-core";
+import { Link } from "react-router-dom";
 
 interface HeroProps {
   eyebrow?: string;
@@ -17,7 +18,7 @@ export function Hero({
   title,
   subtitle,
   ctaLabel = "Explore Now",
-  ctaHref = "#",
+  ctaHref = "/",
 }: HeroProps) {
   return (
     <section
@@ -70,14 +71,14 @@ export function Hero({
             </p>
 
             {/* CTA Button */}
-            {ctaLabel && (
+            {ctaLabel && ctaHref && (
               <Button
                 asChild
                 className="relative z-20 w-fit font-geist tracking-tighter text-center text-lg text-black transition-shadow duration-300 md:w-52"
               >
-                <a className="rounded-full bg-white px-10 py-4 shadow-lg hover:bg-white/90" href={ctaHref}>
+                <Link className="rounded-full bg-white px-10 py-4 shadow-lg hover:bg-white/90" to={ctaHref}>
                   {ctaLabel}
-                </a>
+                </Link>
               </Button>
             )}
           </div>

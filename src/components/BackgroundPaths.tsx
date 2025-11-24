@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 type FloatingPathsProps = {
   position: number;
@@ -92,13 +93,14 @@ export function BackgroundPaths({ title = 'Background Paths' }: BackgroundPathsP
           </h1>
           <div className="group relative inline-block overflow-hidden rounded-2xl bg-gradient-to-b from-white/10 to-white/5 p-px shadow-lg backdrop-blur-lg transition-shadow duration-300 hover:shadow-xl">
             <Button
+              asChild
               variant="ghost"
               className="rounded-[1.15rem] border border-white/10 px-8 py-6 text-lg font-semibold text-white backdrop-blur-md transition-all duration-300 hover:shadow-md group-hover:-translate-y-0.5 group-hover:shadow-lg bg-black/80 hover:bg-black/70"
             >
-              <span className="transition-opacity opacity-90 group-hover:opacity-100">Discover Excellence</span>
-              <span className="ml-3 transition-all duration-300 opacity-70 group-hover:translate-x-1.5 group-hover:opacity-100">
-              
-              </span>
+              <Link to="/projects" className="flex items-center justify-center gap-3">
+                <span className="transition-opacity opacity-90 group-hover:opacity-100">Discover Excellence</span>
+                <span className="transition-all duration-300 opacity-70 group-hover:translate-x-1.5 group-hover:opacity-100" />
+              </Link>
             </Button>
           </div>
         </motion.div>

@@ -57,7 +57,7 @@ const Home = () => {
         title="From World Laws to Working Intelligence"
         subtitle="Translating first principles into deployable systems."
         ctaLabel="Get Started"
-        ctaHref="/contact"
+        ctaHref="/services"
       />
 
       <div className="flex justify-center py-12">

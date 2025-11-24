@@ -54,7 +54,7 @@ const Home = () => {
       <Navigation />
       <Hero
         eyebrow="POWERED BY COSINTR"
-        title="From World Laws to Working intelligenceeeee"
+        title="From World Laws to Working intelligence"
         subtitle="Translating first principles into deployable systems."
         ctaLabel="Get Started"
         ctaHref="/services"

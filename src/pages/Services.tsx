@@ -89,7 +89,7 @@ const Services = () => {
       "Grok",
       "Gemini",
       "n8n",
-      "Crewn AI",
+      "CrewAI",
       "AWS",
     ],
     [
@@ -100,7 +100,7 @@ const Services = () => {
       "Grok",
       "Gemini",
       "n8n",
-      "Crewn AI",
+      "CrewAI",
       "AWS",
     ],
   ];

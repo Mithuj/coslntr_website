@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import GlassCard from "@/components/GlassCard";
+import { PinContainer } from "@/components/ui/pin-container";
 import { AnimatedText } from "@/components/ui/animated-text";
 import { useParallax } from "@/hooks/use-parallax";
 import { fadeUp, scaleUp, staggerFade } from "@/lib/motion";
@@ -212,40 +213,51 @@ const Services = () => {
                 custom={index}
                 className="flex h-full items-stretch justify-center"
               >
-                <div className="mx-auto flex h-full w-full max-w-xs sm:max-w-sm">
-                  <div className="flex h-full min-h-[620px] w-full flex-col gap-4 rounded-[22px] border border-white/10 bg-white/5 p-6 text-left text-white shadow-[0_22px_55px_rgba(12,20,46,0.45)] backdrop-blur-lg">
-                    <div className="flex items-start gap-3">
-                      <service.icon className="h-10 w-10 text-cyan-400" />
-                      <span className="text-xl font-semibold leading-tight">
-                        {service.title}
-                      </span>
+                <PinContainer
+                  title={service.title}
+                  href="/contact"
+                  containerClassName="mx-auto flex h-[660px] w-full max-w-xs sm:max-w-sm items-start justify-center"
+                  className="h-full w-[260px] sm:w-[320px]"
+                  align="top"
+                  showPerspective={false}
+                >
+                  <div className="flex h-full w-full min-h-[620px] flex-col rounded-[22px] border border-white/10 bg-white/5 p-6 text-left text-white shadow-[0_24px_60px_rgba(12,20,46,0.45)] backdrop-blur-lg">
+                    <div className="space-y-4 flex-1">
+                      <div className="flex items-start gap-3">
+                        <service.icon className="h-10 w-10 text-cyan-400" />
+                        <span className="text-xl font-semibold leading-tight">
+                          {service.title}
+                        </span>
+                      </div>
+                      <p className="text-sm text-neutral-300 leading-relaxed">
+                        {service.description}
+                      </p>
+                      <ul className="space-y-2 text-xs text-neutral-200">
+                        {service.features.map((feature) => (
+                          <li key={feature} className="flex items-center gap-2">
+                            <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <p className="text-sm text-neutral-300 leading-relaxed">
-                      {service.description}
-                    </p>
-                    <ul className="space-y-2 text-xs text-neutral-200">
-                      {service.features.map((feature) => (
-                        <li key={feature} className="flex items-center gap-2">
-                          <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
                     {"ctaHref" in service && service.ctaHref && (
-                      <Button
-                        asChild
-                        className="relative mt-auto w-fit font-geist tracking-tight text-center text-sm text-black transition-shadow duration-300 sm:text-base"
-                      >
-                        <Link
-                          to={service.ctaHref}
-                          className="rounded-full bg-white px-7 py-3 shadow-lg hover:bg-white/90"
+                      <div className="mt-auto">
+                        <Button
+                          asChild
+                          className="relative w-fit font-geist tracking-tight text-center text-sm text-black transition-shadow duration-300 sm:text-base"
                         >
-                          {"ctaLabel" in service && service.ctaLabel ? service.ctaLabel : "View More"}
-                        </Link>
-                      </Button>
+                          <Link
+                            to={service.ctaHref}
+                            className="rounded-full bg-white px-7 py-3 shadow-lg hover:bg-white/90"
+                          >
+                            {"ctaLabel" in service && service.ctaLabel ? service.ctaLabel : "View More"}
+                          </Link>
+                        </Button>
+                      </div>
                     )}
                   </div>
-                </div>
+                </PinContainer>
               </motion.div>
             ))}
           </motion.div>

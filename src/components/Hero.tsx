@@ -30,14 +30,14 @@ export function Hero({
       <div className="relative z-10 flex flex-col items-center">
         {/* Eyebrow */}
         {eyebrow && (
-          <a href="#" className="group">
+          <Link to="/about" className="group">
             <span
               className="font-geist mx-auto flex w-fit items-center justify-center rounded-3xl border-[2px] border-white/10 bg-gradient-to-tr from-white/5 via-sky-500/5 to-transparent px-5 py-2 text-sm uppercase tracking-tight text-sky-100"
             >
               {eyebrow}
               <ChevronRight className="inline w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
             </span>
-          </a>
+          </Link>
         )}
 
         <div className="relative mt-4 flex w-full justify-center">
